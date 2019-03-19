@@ -10,3 +10,35 @@ body {
     background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
     font-family: 'Exo', sans-serif;
 }
+
+.icon {
+	width: 80px;
+	font-size: 30px;
+	text-align: center;
+	color: white;
+	text-shadow: 0 0 1px black;
+}
+
+.icon:hover,
+.icon:active {
+	text-decoration: none;
+	transition-duration: 1s;
+	color: #e5e3e3;
+}
+
+.contextText {
+    width: 100%;
+    position: absolute;
+    top: 35vh;
+    text-align: center;
+    color: #fff;
+}
+
+.contextText h1 {
+    font-size: 50px;
+}
+
+.contextText h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+}

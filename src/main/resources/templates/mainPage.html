@@ -3,7 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Main Page</title>
-
+	
+		<!-- External icons -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
 		<!-- External css -->
 		<link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
 		<link rel="stylesheet" th:href="@{/css/hamburgers.min.css}" />
@@ -13,20 +16,24 @@
 		<link rel="stylesheet" th:href="@{/css/work.css}" />
 	</head>
 	<body>
-		<div class="drop-nav">
-			<button class="hamburger hamburger--slider" type="button">
-			  <span class="hamburger-box">
-			    <span class="hamburger-inner"></span>
-			  </span>
-			</button>
-			<div class="drop-menu">
-				<ul class="menu-list">
-					<li class="menu-elem"><a href="#head">Hello</a></li>
-					<li class="menu-elem"><a href="#about">About me</a></li>
-					<li class="menu-elem"><a href="#themes">Themes</a></li>
-					<li class="menu-elem"><a href="#contact">Get in touch</a></li>
+		<nav class="navbar navbar-expand-lg navbar-light nav-main">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="glyphicon glyphicon-home icon" th:href="@{/}"></a>
+					</li>
+					<li class="nav-item">
+						<a class="glyphicon glyphicon-shopping-cart icon" th:href="@{/}"></a>
+					</li>
+					<li class="nav-item">
+						<a class="glyphicon glyphicon-user icon" th:href="@{/}"></a>
+					</li>
 				</ul>
 			</div>
+		</nav>
+
+		<div class="contextText" style="top: 100px;">
+			<h1>Kategorie</h1>
 		</div>
 		
 		<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
