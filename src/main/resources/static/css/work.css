@@ -1,6 +1,54 @@
 .nav-main {
-	background-image: linear-gradient(#9363c4, #4e54c8);
+	background-color: #9363c4;
 	border-radius: 0;
 	border: none;
-	height: 80px;
+	margin: 0;
 }
+
+.nav-grad {
+	background-image: linear-gradient(#9363c4, #4e54c8);
+	height: 40px;
+	margin-bottom: 15px;
+}
+
+.categoryText {
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	margin-bottom: 50px;
+}
+
+.categoryText h1 {
+	font-size: 50px;
+}
+
+.prod-data {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+	width: 204px;
+	height: 220px;
+	color: #fff;
+	background-color: transparent;
+	border: 2px solid #fff;
+	text-align: center;
+	outline: none;
+	text-decoration: none;
+	transition: color 0.3s ease-out,
+	background-color 0.3s ease-out,
+	border-color 0.3s ease-out;
+}
+
+.prod-data:hover,
+.prod-data:active {
+	background-color: #9363c4;
+	border-color: #9363c4;
+	color: #fff;
+	text-decoration: none;
+	transition: color 0.3s ease-in,
+	background-color 0.3s ease-in,
+	border-color 0.3s ease-in;
+}
+
+
