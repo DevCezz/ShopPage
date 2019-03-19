@@ -1,12 +1,60 @@
-INSERT INTO SHOP_MANAGEMENT.PRODUCT (PRODUCT_ID, NAME, DESCRIPTION, PRIZE) VALUES
-  (1, 'jabłko LIGOL', 'spożywany na surowo', 0.98),
-  (2, 'woda Nałęczowianka', 'kupowana w butelkach 1,5l', 1.50);
-    
-INSERT INTO SHOP_MANAGEMENT.UNIT_TYPE (UNIT_TYPE_ID, UNIT_NAME) VALUES
-  (1, 'KILOGRAM'),
-  (2, 'UNIT'),
-  (3, 'LITRE');
-  
-INSERT INTO SHOP_MANAGEMENT.FOOD (PRODUCT_ID, KILOCALORIES_PER_100_GRAMS, UNIT_TYPE_ID) VALUES
-  (1, 52.1, 1),
-  (2, 0, 3);
+INSERT INTO AITSI.PRODUCT_TYPE (NAME) VALUES
+  ('LODÓWKA'),
+  ('PRALKA'),
+  ('ZMYWARKA'),
+  ('ZAMRAŻARKA'),
+  ('SUSZARKA'),
+  ('OKAP'),
+  ('KUCHENKA'),
+  ('AKCESORIA');
+
+INSERT INTO AITSI.PRODUCT (PRODUCER, MODEL, DESCRIPTION, PRIZE, PRODUCT_TYPE_ID) VALUES
+  ('MPM', '147-KB-12', 'Chłodziarko-zamrażarka klasy A+ z systemem automatycznego odszraniania, charakteryzująca się przemyślanym designem i wygodnym rozkładem półek.',
+    879.00, 1),
+  ('SAMSUNG', 'RF56M9540SR/EF Family Hub', 'Przestronna i wygodna w użytkowaniu lodówka Samsung z linii MultiDoor doskonale wkomponuje się w kuchenne wnętrze, nadając mu wyrazisty charakter. Wykonane ze stali nierdzewnej urządzenie to nie tylko minimalistyczne i eleganckie wykończenie. To również m.in szereg funkcjonalnych rozwiązań takich jak: zewnętrzny dystrybutor wody czy szeroko otwierane drzwi, które ułatwiają dostęp do przechowywanych produktów.',
+    14999.00, 1),
+  ('BOSCH', 'KAD 90VI20', 'Jedyna taka lodówka na rynku. Oświetlenie LED pozwala na zobaczenie zawartości swojej chłodziarki w nowym świetle.',
+    4899.00, 1),
+  ('LG', 'FH4U1JBS2', 'Flagowa pralka LG to ogromny wsad 1-10 kg i 1400 obrotów na minutę. Sprzęt, który pomieści ubrania wieloosobowej rodziny. Design sprawia, że jest to jedna z najładniejszych pralek na rynku.',
+    2899.00, 2),
+  ('AMICA', 'DAW6103LSB', 'Świetny stosunek ceny do parametrów. Pralka o ładowności 1-6 kg i 1000 obrotów na minutę. Dzięki głębokości zaledwie 40,5 cm powinna zmieścić się w prawie każdej łazience.',
+    1098.00, 2),
+  ('ELECTROLUX', 'EW8F229SP PerfectCare', 'Charakteruzuje się świetną funkcjęą pary – odświeżanie prania. Załadunek 9 kg i 1200 obr/min to parametry idealne dla dużej rodziny. Electrolux EW8F229SP ma świetny system zarządzania czasem prania: Time Manager.',
+    2191.00, 2),
+  ('BEKO', 'DFS05011W', 'Zmywarka Beko posiada pojemność na 10 kompletów naczyń, szerokość 44,8 cm oraz 5 programów zmywania. Do tego najwyższa klasa efektywności suszenia A, jak również klasa energetyczna A+. Model DFS05011W ma także do zaoferowania system Water Safe, który chroni przed wyciekiem wody i zalaniem pomieszczenia. Warto również wspomnieć o technologii Hot Air Drying, zwiększającej naturalną wentylację dzięki wydostającemu się dodatkowym kanałem gorącemu powietrzu.',
+    949.00, 3),
+  ('ASKO', 'D 5434', 'Próbka klasycznego skandynawskiego wzornictwa ma minimalistyczne formy. Cała uwaga jest zredukowana do okrągłych paneli dotykowych, co do punktów kontaktu z maszyną. Tutaj wszystko jest proste: lewy okrąg do wybierania programów, prawy to zegar.',
+    779.00, 3),
+  ('BOSCH', 'SPS53E18EU', 'Model SPS 53E18 EU oferuje pojemność 9 kpl., zużycie wody 9,5 l/cykl i klasę energetyczną A+. Do tego mamy multum technologii oraz dodatkowych funkcji, wśród których warto wymienić m.in. ActiveWater zapewniającą oszczędność wody i energii, system DuoPower, pozwalający dotrzeć do każdego zakamarka, nie pomijając żadnego naczynia, czy też dwa razy szybsze mycie dzięki VarioSpeed.',
+    1199.00, 3),
+  ('LIENHERR', 'GNPef 2313', 'W ciągu jednej doby jest w stanie zamrozić aż 16 kg żywności. Gdy z jakichś powodów odcięte zostanie zasilanie, jest w stanie utrzymać ujemną temperaturę w swoim wnętrzu jeszcze przez kolejną dobę. Urządzenie posiada regulowany termostat i system NoFrost.',
+    2899.00, 4),
+  ('BOSCH', 'GSN51AW41', 'Zamrażarka, która będzie nie tylko efektywnie zamrażać znajdującą się w jej wnętrzu żywność, ale też na zawołanie dostarczy Ci kostek lodu do drinków, czy napojów. Wszystko to dzięki praktycznej, zdejmowanej kostkarki IceTwister. Z kolei system wentylatorów MultiAirflow równomiernie rozprowadzi chłodne powietrze po całym wnętrzu komory, dzięki czemu wahania temperatury w środku zostają ograniczone do minimum.',
+    2845.00, 4),
+  ('SAMSUNG', 'RZ28H6165SS Twin', 'Wysokiej jakości zamrażarka, która działa równie dobrze, jak wygląda. Nie sposób przejść obojętnie obok jej błyszczących drzwi ozdobionych dwoma niebieskimi wyświetlaczami LED. Zamrażarka posiada szereg czujników, które stale monitorują temperaturę i poziom wilgotności zarówno wewnątrz komory, jak i na zewnątrz. Na podstawie tych danych dobierają optymalne parametry pracy urządzenia. Urządzenie wyposażone jest w cyfrowy inwerter, który charakteryzuje się dużą energooszczędnością.',
+    2799.00, 4),
+  ('BEKO', 'DPY8506GXB1', 'Oferuje wsad 8 kg, wyświetlacz LCD, 16 programów do wyboru, a także funkcję opóźnionego startu. Klasa energetyczna to A+++. Suszarka do ubrań cechuje się blokadą przed dziećmi, drzwiami o szerokości 38 cm (zmieścimy większe rzeczy typu koc), poziomem hałasu 65 dB oraz bębnem, który obraca się w dwóch kierunkach (ubrania nie są pogniecione) i jest oświetlony.',
+    2599.00, 5),
+  ('BOSCH', 'WTW85461PL', 'Bosch WTW85461PL to stabilna i wydajna suszarka kondensacyjna z systemem suszenia pompą cieplną. Charakteryzuje się załadunkiem 9 kg, klasą energetyczną A++ oraz czujnikiem wilgotności ubrań (samodzielnie dobierze czas suszenia). To świetne rozwiązanie dla dużej rodziny.',
+    2145.00, 5),
+  ('ELECTROLUX', 'EW8H458BP PerfectCare', 'EW8H458BP PerfectCareod firmy Electrolux, to bardzo wydajny model suszarki do ubrań z zabezpieczeniem w postaci blokady w przypadku przedwczesnego otwarcia drzwi. Ponadto, wsad to 8 kg, po zakończonej pracy usłyszymy dźwięk, a także zostaniemy poinformowani o konieczności wyczyszczenia filtra.',
+    2399.00, 5),
+  ('SAMSUNG', 'HB6247SX', 'Samsung HB6247SX to podstawowy, ale jednocześnie bardzo solidny okap do zabudowy. Pozwala na szybkie, ciche i skuteczne usuwanie pary wodnej, oparów, dymu i zapachów. Trzy opcje prędkości wentylacji pozwalają na szybkie oczyszczenie powietrza, a klasyczny design pasuje do wystroju nowoczesnej kuchni. Warto wspomnieć o łatwym do czyszczenia filtrze powietrza wykonanym z aluminium, który zatrzymuje zanieczyszczenia i pomaga utrzymać kuchnię w czystości. Aktywne filtry węglowe służą natomiast do oczyszczania powietrza, które jest wypuszczane z powrotem do pomieszczenia.',
+    449.00, 6),
+  ('BOSCH', 'DWK06G660', 'to dobrze wykonany okap kominowy cechujący się wydajnością maksymalną na poziomie 660 m3/h. Wyposażono go w funkcję intensywnego wentylowania, która po 10 minutach wraca do trybu normalnego. Oświetlenie halogenowe pozwala na odpowiednie oświetlenie płyty grzewczej. Urządzenie ma jeden silnik o mocy 250 W, który jest bardzo cichy. Poziom generowanego hałasu to zaledwie 53 dB.',
+    1946.00, 6),
+  ('AMICA', 'IN. 900 BS', 'Amica IN. 900 BS to okap pięknie wykończony (ramka inox wokół szyby) i wyposażony w oświetlenie LED-owe. Można go zintegrować z płytą indukcyjną, dzięki czemu okap uruchomi się zawsze, gdy będziemy coś gotować. To drobna rzecz, ale może niesamowicie uprościć życie. Dzięki aluminiowemu filtrowi tłuszczowemu i 4-stopniowemu wentylatorowi, okap bez problemu poradzi sobie z usunięciem wszelkich nieczystości i zapachów. Jego maksymalna wydajność to 722 m3/h. Podobnie jak inne sprzęty z serii Amica IN., okap jest sterowany sensorowo.',
+    1349.00, 6),
+  ('AMICA', 'EB8552 INTEGRA', 'Bardzo dobrze wykonany i na dodatek korzystnie wyceniony. W tym modelu znajdziesz 10 nastaw, a w tym grill i termoobieg. Piekarnik posiada funkcję rozmrażania, a czyści się parowo (wlewamy pół litra wody na blachę lub do pojemnika i stawiamy na dolnym poziomie) jak i katalitycznie (boki piekarnika pokryte są emalią, która wypala brud).',
+    1079.00, 7),
+  ('BEKO', 'BVR35500XMS', 'Pozwala na pieczenie 2 potraw jednocześnie. Posiada 2 małe termoobiegi zamiast jednego dużego, może zostać przedzielone blachą dając imitację 2 niezależnych piekarników. Rozwiązanie świetnie spisuje się przy pieczeniu mniej wymagających potraw o różnych zapachach, lub gdy chcemy zaoszczędzić czas nagrzewając tylko jedną część piekarnika. Na dodatek Beko ma szeroli zakres temperatur jakie możemy ustawić dla obu komór osobno i oferuje to rozwiązanie w połączeniu z większymi komorami pieczenia.',
+    1858.00, 7),
+  ('ELECTROLUX', 'EOB8757ZOZ', 'Jeden z najlepszych piekarników parowych na rynku! Urządzenie szwedzkiego producenta wyposażono w 3 tryby pieczenia parowego. „Gotowanie na parze” daje prawie 100% pary i świetnie nadaje się do ryb czy warzyw. „Pieczenie parowe 50/50” służy do odgrzewania, a „pieczenie parowe 25/75” sprawdzi się w pieczeniu mięs.',
+    2812.00, 7),
+  ('DE’LONGHI', 'ECAM 23.460.S', 'Model, który można określić mianem „podstawowy”. Zrobi espresso, czarną kawę i kawę z mlekiem (cappuccino, latte). Jest prosty w użyciu, ma dobre parametry techniczne (czyli np. ciśnienie 15 bar, wbudowany młynek żarnowy z regulowaną grubością mielenia, czy zbiornik na wodę o pojemności 1,8 litra). Obsługuje się go za pomocą elektronicznego wyświetlacza i kilku przycisków.',
+    2499.00, 8),
+  ('ELDOM', 'WRK1100 Planet', 'Niedrogi i prosty robot kuchenny, oferujący dużą pomoc w przygotowywaniu codziennych posiłków. Doskonale wykonuje takie funkcje, jak m.in. mieszanie, miksowanie, czy ubijanie piany. Jest to też świetny robot do zagniatania ciasta. Posiada siedem wariantów szybkości pracy, więc będziesz mogła dostosowywać ją do zadania, które robot ma wykonać.',
+    299.00, 8),
+  ('PHILIPS', 'Avance HR2195/00', 'Philips HR2195/00 to bardzo mocny blender kielichowy o mocy 900W. W połączeniu z aż sześcioma ostrzami tnącymi jest to moc w pełni wystarczająca do szybkiego miksowania wszelkich warzyw (nawet najtwardszych) i owoców (również mrożonych) oraz lodu. Urządzenie daje radę zmielić również orzechy, migdały, a nawet sezam na pastę tahini. Uzyskane koktajle i musy są gładkie i aksamitne, bez grudek.',
+    349.00, 8);
+

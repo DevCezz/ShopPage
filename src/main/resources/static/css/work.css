@@ -1,0 +1,26 @@
+.hamburger:focus {
+    outline: none;
+}
+
+.drop-nav {
+	margin: 10px 0 0 10px;
+}
+
+.drop-nav .drop-menu {
+	display: inline-block;
+	position: absolute;
+}
+
+.drop-nav .drop-menu .menu-list {
+	padding: 12px 0 0 25px;
+	margin: 0;
+	font-size: 1.2em;
+	letter-spacing: 0.3ch;
+	position: relative;
+	display: none;
+}
+
+.drop-nav .drop-menu .menu-list .menu-elem {
+	padding-right: 25px;
+	display: inline-block;
+}
