@@ -28,4 +28,7 @@ HELP.md
 ### VS Code ###
 .vscode/
 
+### External ###
+pom.sublime-workspace
+
 src/main/resources/application.properties
