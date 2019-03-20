@@ -1,9 +1,12 @@
 var productData = $(".prod-data");
 var productImg = $(".prod-img");
+var productNotFound = $("#prod-nf");
 
 $(document).ready(function () {
 	productData.fadeIn("slow");
 	productImg.css("transition-duration", "0.6s");
+
+	productNotFound.fadeIn("slow");
 });
 
 productData.mouseover(function () {
@@ -13,3 +16,6 @@ productData.mouseover(function () {
 productData.mouseout(function () {
 	$(this).find(".prod-img").css("filter", "grayscale(0%)")
 });
+
+
+

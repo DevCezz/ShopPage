@@ -69,4 +69,10 @@
     border-color 0.3s ease-in;
 }
 
+#prod-nf {
+    background-color: transparent;
+    color: red;
+    text-align: center;
+}
+
 
