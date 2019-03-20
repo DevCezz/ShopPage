@@ -25,7 +25,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a id="active" class="glyphicon glyphicon-gift icon" th:href="@{/main}">
+						<a class="glyphicon glyphicon-gift icon" th:href="@{/main}">
 							<span class="icon-tooltip">Kategorie</span>
 						</a>
 					</li>
@@ -49,20 +49,15 @@
 		<div class="nav-grad"></div>
 
 		<div class="categoryText" style="top: 100px;">
-			<h1>Kategorie</h1>
+			<h1 th:text="'Kategoria: ' + ${categoryName}"></h1>
 		</div>
 
 		<div class="container">
 			<div class="row">
-				<th:block th:each="category : ${categories}">
+				<th:block th:each="product : ${products}">
 					<div class="col">
 						<div class="prod-data">
-							<img class="prod-img" th:src="@{'/img/categories/' +
-									${category.getName().toLowerCase()} + '.jpg'}">
-
-							<a class="in-category" th:href="@{/products(categoryId=${category.getProductTypeId()})}"
-							  		th:text="${category.getName().toLowerCase().substring(0, 1).toUpperCase()} +
-							 		${category.getName().toLowerCase().substring(1).toLowerCase()}"></a>
+							<h2 th:text="${product.getProducer()} + ' ' + ${product.getModel()}"></h2>
 						</div>
 					</div>
 				</th:block>
