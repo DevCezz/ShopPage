@@ -31,4 +31,13 @@ public class ProductController {
 
         return "products";
     }
+
+    @GetMapping("/product")
+    public String getProductById(@RequestParam("productId") long productId, Model model) {
+        Product product = productService.getProductById(productId);
+
+        model.addAttribute("product", product);
+
+        return "product";
+    }
 }

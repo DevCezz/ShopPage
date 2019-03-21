@@ -9,4 +9,5 @@ public interface ProductService {
     List<ProductType> getAllCategories();
     List<Product> getProductsByCategory(long categoryId);
     String getProductTypeNameWithFirstCapitalLetter(long categoryId);
+    Product getProductById(long id);
 }
