@@ -52,3 +52,25 @@ INSERT INTO AITSI.PRODUCT (PRODUCER, MODEL, DESCRIPTION, PRIZE, PRODUCT_TYPE_ID)
   ('PHILIPS', 'Avance HR2195/00', 'Philips HR2195/00 to bardzo mocny blender kielichowy o mocy 900W. W połączeniu z aż sześcioma ostrzami tnącymi jest to moc w pełni wystarczająca do szybkiego miksowania wszelkich warzyw (nawet najtwardszych) i owoców (również mrożonych) oraz lodu. Urządzenie daje radę zmielić również orzechy, migdały, a nawet sezam na pastę tahini. Uzyskane koktajle i musy są gładkie i aksamitne, bez grudek.',
     349.00, 8);
 
+INSERT INTO AITSI.PRODUCT_COUNT (PRODUCT_ID, AVAILABLE_AMOUNT, PEOPLE_BOUGHT, ITEM_BOUGHT) VALUES
+  (1, 20, 10, 15),
+  (2, 10, 2, 2),
+  (3, 99, 3, 4),
+  (4, 15, 5, 6),
+  (5, 2, 1, 5),
+  (6, 5, 2, 3),
+  (7, 55, 4, 4),
+  (8, 43, 9, 9),
+  (9, 21, 20, 21),
+  (10, 25, 10, 12),
+  (11, 24, 11, 11),
+  (12, 89, 30, 41),
+  (13, 72, 22, 62),
+  (14, 10, 2, 5),
+  (15, 3, 98, 105),
+  (16, 55, 2, 2),
+  (17, 41, 1, 1),
+  (18, 2, 10, 12),
+  (19, 10, 23, 26),
+  (20, 9, 7, 10),
+  (21, 10, 45, 65);
