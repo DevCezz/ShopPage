@@ -14,6 +14,7 @@
 		<!-- Internal css -->
 		<link rel="stylesheet" th:href="@{/css/main.css}" />
 		<link rel="stylesheet" th:href="@{/css/work.css}" />
+		<link rel="stylesheet" th:href="@{/css/categories.css}" />
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light nav-main">
@@ -57,10 +58,18 @@
 				<th:block th:each="product : ${products}">
 					<div class="col">
 						<div class="prod-data">
+							<div class="prod-desc">
+								<h2 th:text="${product.getProducer().toUpperCase()}"></h2>
+								<h3 th:text="${product.getModel()}"></h3>
+							</div>
+
 							<img class="prod-img" th:src="@{'/img/products/' +
 									${product.getProductId()} + '.jpg'}" style="width: 200px">
 
-							<h2 th:text="${product.getProducer()} + ' ' + ${product.getModel()}"></h2>
+							<div class="prod-prize">
+								<a class="prod-href" th:href="@{/products/product(productId=${product.getProductId()})}"
+								   th:text="${#numbers.formatDecimal(product.getPrize(), 2, 2)} + ' zł'"></a>
+							</div>
 
 						</div>
 					</div>
