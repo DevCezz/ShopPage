@@ -1,3 +1,13 @@
+INSERT INTO AITSI.USERS (USERNAME, PASSWORD, ENABLED) VALUES
+  ('ADMIN', '{bcrypt}$2a$04$CS.yrtXZaWFAMYSkOh/.rugGQZO04xAx1kq6OUFvi3GJhR5gc0m42', 1), --pass: admin
+  ('USER', '{bcrypt}$2a$04$agboocGRdZNuYzykt2/gPOd1StcFInOdvAgdltRmverIk7sKSJhea', 1),  --pass: user
+  ('USER2', '{bcrypt}$2a$04$/Yv/pXNG3iQ3qhMF3G8qG.Rb44o1fF1Te92/8g0g1iJgdZ6U..clW', 1);  --pass: user2
+
+INSERT INTO AITSI.AUTHORITIES (USERNAME, AUTHORITY) VALUES
+  ('ADMIN', 'ROLE_ADMIN'),
+  ('USER', 'ROLE_USER'),
+  ('USER2', 'ROLE_USER');
+
 INSERT INTO AITSI.PRODUCT_TYPE (NAME) VALUES
   ('LODÓWKI'),
   ('PRALKI'),
