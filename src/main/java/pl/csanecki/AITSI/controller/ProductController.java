@@ -30,7 +30,7 @@ public class ProductController {
         model.addAttribute("categoryName", productTypeName);
         model.addAttribute("products", listOfProducts);
 
-        return "products";
+        return "category";
     }
 
     @GetMapping("/product")
