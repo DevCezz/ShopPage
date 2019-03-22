@@ -13,7 +13,7 @@
 		
 		<!-- Internal css -->
 		<link rel="stylesheet" th:href="@{/css/general.css}" />
-		<link rel="stylesheet" th:href="@{/css/product.css}" />
+		<link rel="stylesheet" th:href="@{/css/mainPage.css}" />
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light nav-main">
@@ -49,15 +49,15 @@
 		<div class="nav-grad"></div>
 
 		<div class="titleText">
-			<h1 class = "small-mg-bot">Kategorie</h1>
+			<h1 class="small-mg-bot">Kategorie</h1>
 		</div>
 
 		<div class="container">
 			<div class="row">
 				<th:block th:each="category : ${categories}">
 					<div class="col">
-						<div class="prod-data">
-							<img class="prod-img" th:src="@{'/img/categories/' +
+						<div class="cat-data">
+							<img class="cat-img" th:src="@{'/img/categories/' +
 									${category.getName().toLowerCase()} + '.jpg'}">
 
 							<a class="in-category" th:href="@{/products(categoryId=${category.getProductTypeId()})}"

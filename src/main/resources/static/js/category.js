@@ -1,5 +1,5 @@
-var productData = $(".cat-data");
-var productImg = $(".cat-img");
+var productData = $(".prod-data");
+var productImg = $(".prod-img");
 var productNotFound = $("#prod-nf");
 
 $(document).ready(function () {
@@ -10,11 +10,11 @@ $(document).ready(function () {
 });
 
 productData.mouseover(function () {
-	$(this).find(".cat-img").css("filter", "grayscale(100%)")
+	$(this).find(".prod-img").css("filter", "grayscale(100%)")
 });
 
 productData.mouseout(function () {
-	$(this).find(".cat-img").css("filter", "grayscale(0%)")
+	$(this).find(".prod-img").css("filter", "grayscale(0%)")
 });
 
 

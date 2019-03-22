@@ -12,7 +12,7 @@
 		<link rel="stylesheet" th:href="@{/css/hamburgers.min.css}" />
 		
 		<!-- Internal css -->
-		<link rel="stylesheet" th:href="@{/css/main.css}" />
+		<link rel="stylesheet" th:href="@{/css/general.css}" />
 		<link rel="stylesheet" th:href="@{/css/product.css}" />
 	</head>
 	<body>
@@ -48,9 +48,9 @@
 
 		<div class="nav-grad"></div>
 
-		<div class="categoryText" style="top: 100px;">
+		<div class="titleText">
 			<h1 th:text="${product.getProducer()} + ' '+ ${product.getModel()}"></h1>
-			<h2>
+			<h2 class="small-mg-bot">
 				<a class="cat-href" th:href="@{/products(categoryId=${product.getProductType().getProductTypeId()})}"
 				   th:text="'Powrót do kategorii: ' + ${product.getProductType().getName()}"></a>
 			</h2>
@@ -59,20 +59,19 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm">
-					<img class="prod-img" th:src="@{'/img/products/' + ${product.getProductId()} + '.jpg'}">
+					<img class="unit-img" th:src="@{'/img/products/' + ${product.getProductId()} + '.jpg'}">
 				</div>
 				<div class="col-sm">
-					<div class="prod-desc">
-						<div class="prod-prize" th:text="${#numbers
+					<div class="unit-desc">
+						<div class="unit-prize" th:text="${#numbers
 							.formatDecimal(product.getPrize(), 2, 2)} + ' zł'"></div>
-						<div class="prod-info">
+						<div class="unit-info">
 							<div th:text="${product.getDescription()}"></div>
 							<div th:text="'Dostępna ilość produktów: ' + ${productCount.getAvaiableAmount()}"></div>
 							<div th:text="${productCount.getPeopleBought()} + ' osób kupiło ' + 
 								${productCount.getItemBought()} + ' przedmiotów.'"></div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>

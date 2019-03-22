@@ -6,6 +6,7 @@
     margin-right: auto;
     margin-bottom: 50px;
     color: #fff;
+    text-align: center;
 }
 
 .prod-data:hover,
@@ -26,6 +27,10 @@
 
 .prod-desc h3 {
     font-size: 12px;
+}
+
+.prod-img {
+	width: 200px;
 }
 
 .prod-prize {
@@ -51,10 +56,12 @@
 }
 
 
-#prod-nf {
-    background-color: transparent;
-    color: red;
-    text-align: center;
-}
+
+
+
+
+
+
+
 
 

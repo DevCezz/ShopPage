@@ -1,5 +1,5 @@
-var productImg = $(".prod-img");
-var productDesc = $(".prod-desc");
+var productImg = $(".unit-img");
+var productDesc = $(".unit-desc");
 
 $(document).ready(function () {
 	productImg.fadeIn("slow");
