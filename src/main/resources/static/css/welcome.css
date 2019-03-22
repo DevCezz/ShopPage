@@ -1,3 +1,19 @@
+.contextText {
+    width: 100%;
+    position: absolute;
+    top: 35vh;
+    text-align: center;
+    color: #fff;
+}
+
+.contextText h1 {
+    font-size: 50px;
+}
+
+.contextText h2 {
+    font-size: 30px;
+}
+
 .in-button {
     position: absolute;
     margin-left: auto;
