@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class ProductCount {
 	@Id
 	@Column(name = "PRODUCT_ID")
-	private long id;
+	private long productId;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
