@@ -67,9 +67,13 @@
 							.formatDecimal(product.getPrize(), 2, 2)} + ' zł'"></div>
 						<div class="unit-info">
 							<div th:text="${product.getDescription()}"></div>
+							<br>
 							<div th:text="'Dostępna ilość produktów: ' + ${productCount.getAvaiableAmount()}"></div>
+							<br>
 							<div th:text="${productCount.getPeopleBought()} + ' osób kupiło ' + 
 								${productCount.getItemBought()} + ' przedmiotów.'"></div>
+							<br>
+							<a class="unit-buy" th:href="@{/main}">Dodaj do koszyka</a>
 						</div>
 					</div>
 				</div>
