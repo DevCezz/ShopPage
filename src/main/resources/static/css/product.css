@@ -35,6 +35,12 @@ h2 > a:hover:before {
     box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.75);
 }
 
+.unit-info {
+    text-align: justify;
+    padding: 10px 20px 0 20px;
+    font-size: 12px;
+}
+
 .unit-desc {
     display: none;
     height: 100%;
@@ -51,10 +57,10 @@ h2 > a:hover:before {
     padding-top: 10px;
 }
 
-.unit-info {
-    text-align: justify;
-    padding: 10px 20px 0 20px;
-    font-size: 12px;
+.unit-button {
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
 }
 
 .unit-buy {

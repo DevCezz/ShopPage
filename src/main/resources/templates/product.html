@@ -9,7 +9,6 @@
 	
 		<!-- External css -->
 		<link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
-		<link rel="stylesheet" th:href="@{/css/hamburgers.min.css}" />
 		
 		<!-- Internal css -->
 		<link rel="stylesheet" th:href="@{/css/general.css}" />
@@ -73,7 +72,9 @@
 							<div th:text="${productCount.getPeopleBought()} + ' osób kupiło ' + 
 								${productCount.getItemBought()} + ' przedmiotów.'"></div>
 							<br>
-							<a class="unit-buy" th:href="@{/main}">Dodaj do koszyka</a>
+							<div class="unit-button">
+								<a class="unit-buy" th:href="@{/main}">Dodaj do koszyka</a>
+							</div>
 						</div>
 					</div>
 				</div>
