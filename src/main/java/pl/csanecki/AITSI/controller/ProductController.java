@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.csanecki.AITSI.entity.Product;
+import pl.csanecki.AITSI.entity.ProductCount;
 import pl.csanecki.AITSI.service.ProductService;
 
 import java.util.List;
@@ -35,9 +36,11 @@ public class ProductController {
     @GetMapping("/product")
     public String getProductById(@RequestParam("productId") long productId, Model model) {
         Product product = productService.getProductById(productId);
-
+        ProductCount productCount = productService.getProductCountByProductId(productId);
+        
         model.addAttribute("product", product);
-
+        model.addAttribute("productCount", productCount);
+        
         return "product";
     }
 }
