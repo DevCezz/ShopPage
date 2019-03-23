@@ -15,37 +15,8 @@
 		<link rel="stylesheet" th:href="@{/css/mainPage.css}" />
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-light nav-main">
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto" style="margin-left: 50px">
-					<li class="nav-item">
-						<a class="glyphicon glyphicon-home icon" th:href="@{/}">
-							<span class="icon-tooltip">Ekran powitalny</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a id="active" class="glyphicon glyphicon-gift icon" th:href="@{/main}">
-							<span class="icon-tooltip">Kategorie</span>
-						</a>
-					</li>
-				</ul>
-
-				<ul class="navbar-nav ml-auto" style="margin-right: 50px">
-					<li class="nav-item">
-						<a class="glyphicon glyphicon-shopping-cart icon" th:href="@{/}">
-							<span class="icon-tooltip">Koszyk</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="glyphicon glyphicon-user icon" th:href="@{/login}">
-							<span class="icon-tooltip">Dane użytkownika</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-
-		<div class="nav-grad"></div>
+		<nav th:replace="fragments/header :: header"/>
+		<div th:replace="fragments/header :: grad"/>
 
 		<div class="titleText">
 			<h1 class="small-mg-bot">Kategorie</h1>
