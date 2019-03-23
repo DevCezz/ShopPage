@@ -3,7 +3,7 @@ package pl.csanecki.AITSI.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ORDERS", schema = "AITSI")
+@Table(name = "ORDERS")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

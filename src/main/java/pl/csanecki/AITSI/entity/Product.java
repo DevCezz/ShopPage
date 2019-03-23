@@ -1,9 +1,11 @@
 package pl.csanecki.AITSI.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "PRODUCT", schema = "AITSI")
+@Table(name = "PRODUCT")
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +19,7 @@ public class Product {
 	private String model;
 	
 	@Column(name = "DESCRIPTION")
+	@Length(max = 1000)
 	private String description;
 	
 	@Column(name = "PRIZE")

@@ -9,7 +9,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PRODUCT_COUNT", schema = "AITSI")
+@Table(name = "PRODUCT_COUNT")
 public class ProductCount {
 	@Id
 	@Column(name = "PRODUCT_ID")
