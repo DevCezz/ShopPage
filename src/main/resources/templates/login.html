@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>Login Page</title>
+
+        <!-- External icons -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- External css -->
+        <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+
+        <!-- Internal css -->
+        <link rel="stylesheet" th:href="@{/css/general.css}" />
+        <link rel="stylesheet" th:href="@{/css/login.css}" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light nav-main">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto" style="margin-left: 50px">
+                    <li class="nav-item">
+                        <a class="glyphicon glyphicon-home icon" th:href="@{/}">
+                            <span class="icon-tooltip">Ekran powitalny</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="glyphicon glyphicon-gift icon" th:href="@{/main}">
+                            <span class="icon-tooltip">Kategorie</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto" style="margin-right: 50px">
+                    <li class="nav-item">
+                        <a class="glyphicon glyphicon-shopping-cart icon" th:href="@{/}">
+                            <span class="icon-tooltip">Koszyk</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="active" class="glyphicon glyphicon-user icon" th:href="@{/login}">
+                            <span class="icon-tooltip">Dane użytkownika</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="nav-grad"></div>
+
+        <div class="titleText">
+            <h1 class="small-mg-bot">Zaloguj się</h1>
+        </div>
+
+        <div class="container">
+            <form class="login-form" th:action="@{/login}" th:method="post">
+                <input type="text" id="email" name="email" th:placeholder="Email"
+                       class="form-control login-input" />
+                <br>
+
+                <input type="password" id="password" name="password" th:placeholder="Hasło"
+                       class="form-control login-input" />
+                <br>
+
+                <div align="center" th:if="${param.error}">
+                    <p class="login-error">Email lub hasło są niepoprawne, spóbuj ponownie.</p>
+                </div>
+                <div align="center" th:if="${successMessage}">
+                    <p style="color: red;" th:text="${successMessage}"></p>
+                </div>
+
+                <div class="button-center">
+                    <button class="login-button" type="submit" name="submit" value="" th:text="Zaloguj"></button>
+                </div>
+                <br>
+            </form>
+
+            <form th:action="@{/registration}" th:method="get">
+                <div class="button-center">
+                    <button class="login-button" type="submit" name="submit" value="" th:text="Zarejestruj"></button>
+                </div>
+            </form>
+        </div>
+
+        <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    </body>
+</html>
