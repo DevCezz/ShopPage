@@ -11,5 +11,7 @@ public interface ProductService {
     List<Product> getProductsByCategory(long categoryId);
     String getProductTypeNameWithFirstCapitalLetter(long categoryId);
     Product getProductById(long id);
+    Product getProductByProducerAndModel(String producer, String model);
+    void saveProduct(Product product);
     ProductCount getProductCountByProductId(long id);
 }

@@ -53,6 +53,16 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.getProductByProductId(id);
     }
 
+    @Override
+    public Product getProductByProducerAndModel(String producer, String model) {
+        return productRepository.getProductByProducerAndModel(producer, model);
+    }
+
+    @Override
+    public void saveProduct(Product product) {
+        productRepository.save(product);
+    }
+
 	@Override
 	public ProductCount getProductCountByProductId(long id) {
 		return productCountRepository.getProductCountByProductId(id);
