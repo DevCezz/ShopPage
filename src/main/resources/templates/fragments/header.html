@@ -1,4 +1,5 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <div th:fragment="header-css">
         <!-- External icons -->
@@ -25,16 +26,18 @@
                         <span class="icon-tooltip">Kategorie</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="glyphicon glyphicon-plus icon" th:href="@{/addCategory}">
-                        <span class="icon-tooltip">Dodaj kategorię</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="glyphicon glyphicon-tags icon" th:href="@{/addProduct}">
-                        <span class="icon-tooltip">Dodaj produkt</span>
-                    </a>
-                </li>
+                <th:block sec:authorize="hasAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="glyphicon glyphicon-plus icon" th:href="@{/addCategory}">
+                            <span class="icon-tooltip">Dodaj kategorię</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="glyphicon glyphicon-tags icon" th:href="@{/addProduct}">
+                            <span class="icon-tooltip">Dodaj produkt</span>
+                        </a>
+                    </li>
+                </th:block>
             </ul>
 
             <ul class="navbar-nav ml-auto" style="margin-right: 50px">
@@ -48,6 +51,13 @@
                         <span class="icon-tooltip">Dane użytkownika</span>
                     </a>
                 </li>
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="glyphicon glyphicon-log-out icon" th:href="@{/logout}">
+                            <span class="icon-tooltip">Wyloguj się</span>
+                        </a>
+                    </li>
+                </th:block>
             </ul>
         </div>
     </nav>
