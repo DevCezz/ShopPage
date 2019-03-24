@@ -18,6 +18,11 @@
 		<nav th:replace="fragments/header :: header"/>
 		<div th:replace="fragments/header :: grad"/>
 
+		<div align="center" th:if="${successMessage}">
+			<p style="color: yellow;" th:text="${successMessage}"></p>
+		</div>
+		<br>
+
 		<div class="titleText">
 			<h1 class="small-mg-bot">Kategorie</h1>
 		</div>

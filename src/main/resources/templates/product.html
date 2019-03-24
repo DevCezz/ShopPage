@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	<head>
 		<meta charset="utf-8">
 		<title>Main Page</title>
@@ -43,8 +44,18 @@
 							<div th:text="${productCount.getPeopleBought()} + ' osób kupiło ' + 
 								${productCount.getItemBought()} + ' przedmiotów.'"></div>
 							<br>
-							<div class="unit-button">
-								<a class="unit-buy" th:href="@{/main}">Dodaj do koszyka</a>
+							<div class="prod-but">
+								<div class="unit-button">
+									<a class="unit-buy" th:href="@{/main}">Dodaj do koszyka</a>
+								</div>
+								<th:block sec:authorize="('ADMIN')">
+									<div class="unit-button" style="left: 200px">
+										<a class="unit-buy" th:href="@{/addProduct}">Edytuj</a>
+									</div>
+									<div class="unit-button" style="left: 300px">
+										<a class="unit-buy" th:href="@{/deleteProduct}">Usuń</a>
+									</div>
+								</th:block>
 							</div>
 						</div>
 					</div>

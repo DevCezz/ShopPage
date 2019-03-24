@@ -7,9 +7,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.csanecki.AITSI.entity.Product;
 import pl.csanecki.AITSI.entity.ProductType;
-import pl.csanecki.AITSI.entity.User;
 import pl.csanecki.AITSI.service.ProductService;
 
 import javax.validation.Valid;
@@ -25,12 +25,36 @@ public class AdminController {
     }
 
     @GetMapping("/addCategory")
-    public String addCategory(Model model) {
-        ProductType productType = new ProductType();
+    public String getFormForCategory(@ModelAttribute("category") ProductType productType, Model model) {
+        if(productType == null)
+            productType = new ProductType();
 
         model.addAttribute("category", productType);
 
         return "addCategory";
+    }
+
+    @PostMapping("/addCategory")
+    public String postFormForCategory(@Valid @ModelAttribute("category") ProductType productType,
+                                      BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
+        ProductType productTypeExists = productService.getProductTypeByName(productType.getName().toUpperCase());
+
+        if(productTypeExists != null) {
+            bindingResult
+                    .rejectValue("name", "error.productType",
+                            "* Istnieje już w bazie taka kategoria");
+        }
+
+        if(bindingResult.hasErrors()) {
+            return "addCategory";
+        } else {
+            productType.setName(productType.getName().toUpperCase());
+            productService.saveProductType(productType);
+
+            redirectAttributes.addFlashAttribute("successMessage", "Pomyślenie zarejestrowano kategorię.");
+
+            return "redirect:/main";
+        }
     }
 
     @GetMapping("/addProduct")
@@ -47,13 +71,14 @@ public class AdminController {
     }
 
     @PostMapping("/addProduct")
-    public String postFormForProduct(@Valid Product product, BindingResult bindingResult, Model model) {
+    public String postFormForProduct(@Valid Product product, BindingResult bindingResult,
+                                     Model model, RedirectAttributes redirectAttributes) {
         Product productExists = productService.getProductByProducerAndModel(product.getProducer(), product.getModel());
 
         if(productExists != null) {
             bindingResult
                     .rejectValue("model", "error.product",
-                            "Istnieje już w bazie product o takim modelu tego producenta.");
+                            "* Istnieje już w bazie product o takim modelu tego producenta");
         }
 
         if(bindingResult.hasErrors()) {
@@ -65,7 +90,7 @@ public class AdminController {
         } else {
             productService.saveProduct(product);
 
-            model.addAttribute("successMessage", "Pomyślenie zarejestrowano produkt.");
+            redirectAttributes.addFlashAttribute("successMessage", "Pomyślenie zarejestrowano produkt.");
 
             return "redirect:/main";
         }

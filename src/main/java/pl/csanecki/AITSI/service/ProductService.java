@@ -13,5 +13,7 @@ public interface ProductService {
     Product getProductById(long id);
     Product getProductByProducerAndModel(String producer, String model);
     void saveProduct(Product product);
+    ProductType getProductTypeByName(String name);
+    void saveProductType(ProductType productType);
     ProductCount getProductCountByProductId(long id);
 }

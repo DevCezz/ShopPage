@@ -1,11 +1,14 @@
 package pl.csanecki.AITSI.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "PRODUCT_TYPE")
@@ -16,6 +19,8 @@ public class ProductType {
 	private long productTypeId;
 	
 	@Column(name = "NAME")
+	@NotEmpty(message = "* Proszę podaj nazwę kategorii")
+	@Length(min = 2, max = 50, message = "* Nazwa powinna zawierać od 2 do 50 znaków")
 	private String name;
 
 	@Override

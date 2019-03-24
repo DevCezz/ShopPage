@@ -63,6 +63,16 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
     }
 
+    @Override
+    public ProductType getProductTypeByName(String name) {
+        return productTypeRepository.getByName(name);
+    }
+
+    @Override
+    public void saveProductType(ProductType productType) {
+        productTypeRepository.save(productType);
+    }
+
 	@Override
 	public ProductCount getProductCountByProductId(long id) {
 		return productCountRepository.getProductCountByProductId(id);
