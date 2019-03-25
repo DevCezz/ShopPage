@@ -48,7 +48,7 @@
 								<div class="unit-button">
 									<a class="unit-buy" th:href="@{/main}">Dodaj do koszyka</a>
 								</div>
-								<th:block sec:authorize="('ADMIN')">
+								<th:block sec:authorize="hasAuthority('ADMIN')">
 									<div class="unit-button" style="left: 200px">
 										<a class="unit-buy" th:href="@{/addProduct}">Edytuj</a>
 									</div>
