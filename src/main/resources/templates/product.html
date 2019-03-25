@@ -50,7 +50,7 @@
 								</div>
 								<th:block sec:authorize="hasAuthority('ADMIN')">
 									<div class="unit-button" style="left: 200px">
-										<a class="unit-buy" th:href="@{/addProduct}">Edytuj</a>
+										<a class="unit-buy" th:href="@{/editProduct(productId=${product.getProductId()})}">Edytuj</a>
 									</div>
 									<div class="unit-button" style="left: 300px">
 										<a class="unit-buy" th:href="@{/deleteProduct}">Usuń</a>

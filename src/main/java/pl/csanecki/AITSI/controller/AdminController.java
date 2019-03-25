@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.csanecki.AITSI.entity.Product;
 import pl.csanecki.AITSI.entity.ProductType;
@@ -75,7 +76,7 @@ public class AdminController {
                                      Model model, RedirectAttributes redirectAttributes) {
         Product productExists = productService.getProductByProducerAndModel(product.getProducer(), product.getModel());
 
-        if(productExists != null) {
+        if(productExists != null && product.getProductId() == 0) {
             bindingResult
                     .rejectValue("model", "error.product",
                             "* Istnieje już w bazie product o takim modelu tego producenta");
@@ -94,5 +95,16 @@ public class AdminController {
 
             return "redirect:/main";
         }
+    }
+    
+    @GetMapping("/editProduct")
+    public String getFormForProduct(@RequestParam("productId") long productId, Model model) {
+        Product product = productService.getProductById(productId);
+        List<ProductType> productTypes = productService.getAllCategories();
+
+        model.addAttribute("product", product);
+        model.addAttribute("categories", productTypes);
+
+        return "addProduct";
     }
 }

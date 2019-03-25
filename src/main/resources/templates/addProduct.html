@@ -24,6 +24,8 @@
 
         <div class="container">
             <form class="login-form" th:action="@{/addProduct}" th:method="post" th:object="${product}">
+            	<input type="hidden" id="id" name="id" th:field="*{productId}" />
+            	
                 <input type="text" id="producer" name="producer" th:placeholder="Producent" th:field="*{producer}"
                        class="form-control login-input" />
                 <label th:if="${#fields.hasErrors('producer')}" th:errors="*{producer}"
@@ -59,7 +61,7 @@
                 <br>
 
                 <div class="button-center">
-                    <button class="login-button" type="submit" name="submit" value="" th:text="Dodaj"></button>
+                    <button class="login-button" type="submit" name="submit" value="" th:text="Zatwierdź"></button>
                 </div>
                 <br>
             </form>
