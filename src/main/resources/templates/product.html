@@ -39,25 +39,30 @@
 						<div class="unit-info">
 							<div th:text="${product.getDescription()}"></div>
 							<br>
+
 							<div th:text="'Dostępna ilość produktów: ' + ${productCount.getAvaiableAmount()}"></div>
-							<br>
+
 							<div th:text="${productCount.getPeopleBought()} + ' osób kupiło ' + 
 								${productCount.getItemBought()} + ' przedmiotów.'"></div>
 							<br>
-							<div class="prod-but">
-								<div class="unit-button">
-									<a class="unit-buy" th:href="@{/main}">Dodaj do koszyka</a>
-								</div>
-								<th:block sec:authorize="hasAuthority('ADMIN')">
-									<div class="unit-button" style="left: 200px">
-										<a class="unit-buy" th:href="@{/editProduct(productId=${product.getProductId()})}">Edytuj</a>
+
+							<div class="buttons-down">
+								<div class="unit-ord-but">
+									<div class="unit-button">
+										<a class="unit-buy" th:href="@{/cart}">Dodaj do koszyka</a>
 									</div>
-           							<form th:action="@{/deleteProduct(productId=${product.getProductId()})}" th:method="delete">
-										<div class="unit-button" style="left: 300px">
-										<button class="unit-buy" type="submit" name="submit" value="" th:text="Usuń"></button>
+									<th:block sec:authorize="hasAuthority('ADMIN')">
+										<div class="unit-button">
+											<a class="unit-buy" th:href="@{/editProduct(productId=${product
+											.getProductId()})}">Edytuj</a>
 										</div>
-									</form>
-								</th:block>
+										<form th:action="@{/deleteProduct(productId=${product.getProductId()})}"
+											  th:method="delete" class="unit-button">
+											<button class="unit-buy" type="submit" name="submit" value=""
+													th:text="Usuń" onClick="return confirm('Jesteś pewny?')"></button>
+										</form>
+									</th:block>
+								</div>
 							</div>
 						</div>
 					</div>

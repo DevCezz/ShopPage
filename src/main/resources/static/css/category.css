@@ -1,3 +1,33 @@
+.cat-button {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.cat-edit {
+    width: 200px;
+    padding: 8px 16px;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    transition: color 0.3s ease-out,
+    background-color 0.3s ease-out,
+    border-color 0.3s ease-out;
+}
+
+.cat-edit:hover,
+.cat-edit:active {
+    background-color: #9363c4;
+    border-color: #9363c4;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease-in,
+    background-color 0.3s ease-in,
+    border-color 0.3s ease-in;
+}
+
 .prod-data {
     width: 200px;
     height: 260px;

@@ -57,14 +57,23 @@ h2 > a:hover:before {
     padding-top: 10px;
 }
 
-.unit-button {
+.buttons-down {
     position: absolute;
     bottom: 30px;
+}
+
+.unit-ord-but {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.unit-button {
+    display: flex;
     text-align: center;
+    margin-right: 10px;
 }
 
 .unit-buy {
-    width: 200px;
     padding: 8px 16px;
     color: #fff;
     background-color: transparent;

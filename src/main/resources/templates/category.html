@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	<head>
 		<meta charset="utf-8">
 		<title>Main Page</title>
@@ -22,8 +23,8 @@
 			<h1 th:text="'Kategoria: ' + ${categoryName}"></h1>
 			
 			<th:block sec:authorize="hasAuthority('ADMIN')">
-				<div class="unit-button" style="left: 200px">
-					<a class="unit-buy" th:href="@{/editCategory(categoryId=${category.getProductTypeId()})}">Edytuj</a>
+				<div class="cat-button" style="left: 200px">
+					<a class="cat-edit" th:href="@{/editCategory(categoryId=${category.getProductTypeId()})}">Edytuj</a>
 				</div>
 			</th:block>
 		</div>
