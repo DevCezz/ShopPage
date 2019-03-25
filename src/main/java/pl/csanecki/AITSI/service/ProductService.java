@@ -13,7 +13,9 @@ public interface ProductService {
     Product getProductById(long id);
     Product getProductByProducerAndModel(String producer, String model);
     void saveProduct(Product product);
+    void deleteProduct(Product product);
     ProductType getProductTypeByName(String name);
+    ProductType getProductTypeById(long productTypeId);
     void saveProductType(ProductType productType);
     ProductCount getProductCountByProductId(long id);
 }

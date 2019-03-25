@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.csanecki.AITSI.entity.Product;
 import pl.csanecki.AITSI.entity.ProductCount;
+import pl.csanecki.AITSI.entity.ProductType;
 import pl.csanecki.AITSI.service.ProductService;
+import pl.csanecki.AITSI.util.NameFormatter;
 
 import java.util.List;
 
@@ -24,9 +26,11 @@ public class ProductController {
 
     @GetMapping()
     public String getProductsOfCategoryName(@RequestParam("categoryId") long categoryId, Model model) {
-        String productTypeName = productService.getProductTypeNameWithFirstCapitalLetter(categoryId);
+        ProductType productType = productService.getProductTypeById(categoryId);
         List<Product> listOfProducts = productService.getProductsByCategory(categoryId);
-
+        String productTypeName = NameFormatter.getNameWithFirstCapitalLetter(productType.getName());
+        
+        model.addAttribute("category", productType);
         model.addAttribute("categoryName", productTypeName);
         model.addAttribute("products", listOfProducts);
 

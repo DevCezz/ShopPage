@@ -18,8 +18,14 @@
 		<nav th:replace="fragments/header :: header"/>
 		<div th:replace="fragments/header :: grad"/>
 
-		<div class="titleText">
-			<h1 class="small-mg-bot" th:text="'Kategoria: ' + ${categoryName}"></h1>
+		<div class="titleText small-mg-bot">
+			<h1 th:text="'Kategoria: ' + ${categoryName}"></h1>
+			
+			<th:block sec:authorize="hasAuthority('ADMIN')">
+				<div class="unit-button" style="left: 200px">
+					<a class="unit-buy" th:href="@{/editCategory(categoryId=${category.getProductTypeId()})}">Edytuj</a>
+				</div>
+			</th:block>
 		</div>
 
 		<div class="container">
@@ -39,7 +45,6 @@
 								<a class="prod-href" th:href="@{/products/product(productId=${product.getProductId()})}"
 								   th:text="${#numbers.formatDecimal(product.getPrize(), 2, 2)} + ' zł'"></a>
 							</div>
-
 						</div>
 					</div>
 				</th:block>

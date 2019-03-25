@@ -52,9 +52,11 @@
 									<div class="unit-button" style="left: 200px">
 										<a class="unit-buy" th:href="@{/editProduct(productId=${product.getProductId()})}">Edytuj</a>
 									</div>
-									<div class="unit-button" style="left: 300px">
-										<a class="unit-buy" th:href="@{/deleteProduct}">Usuń</a>
-									</div>
+           							<form th:action="@{/deleteProduct(productId=${product.getProductId()})}" th:method="delete">
+										<div class="unit-button" style="left: 300px">
+										<button class="unit-buy" type="submit" name="submit" value="" th:text="Usuń"></button>
+										</div>
+									</form>
 								</th:block>
 							</div>
 						</div>

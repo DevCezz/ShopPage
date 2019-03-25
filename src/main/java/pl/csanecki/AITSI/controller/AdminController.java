@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,9 +39,12 @@ public class AdminController {
     @PostMapping("/addCategory")
     public String postFormForCategory(@Valid @ModelAttribute("category") ProductType productType,
                                       BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
-        ProductType productTypeExists = productService.getProductTypeByName(productType.getName().toUpperCase());
+    	String nameOfProductTypeInCapitals = productType.getName().toUpperCase();
+        ProductType productTypeExists = productService.getProductTypeByName(nameOfProductTypeInCapitals);
 
-        if(productTypeExists != null) {
+        productType.setName(nameOfProductTypeInCapitals);
+        
+        if(productTypeExists != null && productType.getProductTypeId() == 0) {
             bindingResult
                     .rejectValue("name", "error.productType",
                             "* Istnieje już w bazie taka kategoria");
@@ -57,7 +61,16 @@ public class AdminController {
             return "redirect:/main";
         }
     }
+    
+    @GetMapping("/editCategory")
+    public String getFormForCategory(@RequestParam("categoryId") long productTypeId, Model model) {
+        ProductType productType = productService.getProductTypeById(productTypeId);
 
+        model.addAttribute("category", productType);
+
+        return "addCategory";
+    }
+    
     @GetMapping("/addProduct")
     public String getFormForProduct(@ModelAttribute("product") Product product, Model model) {
         if(product == null)
@@ -106,5 +119,15 @@ public class AdminController {
         model.addAttribute("categories", productTypes);
 
         return "addProduct";
+    }
+    
+    @DeleteMapping("/deleteProduct")
+    public String deleteProduct(@RequestParam("productId") long productId, Model model, RedirectAttributes redirectAttributes) {
+        Product product = productService.getProductById(productId);
+        productService.deleteProduct(product);
+
+        redirectAttributes.addFlashAttribute("successMessage", "Produkt o id " + productId + " został usunięty.");
+
+        return "redirect:/main";
     }
 }
