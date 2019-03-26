@@ -40,15 +40,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public String getProductTypeNameWithFirstCapitalLetter(long categoryId) {
-        ProductType productType = productTypeRepository.getByProductTypeId(categoryId);
-
-        String returnName = NameFormatter.getNameWithFirstCapitalLetter(productType.getName());
-
-        return returnName;
-    }
-
-    @Override
     public Product getProductById(long id) {
         return productRepository.getProductByProductId(id);
     }
@@ -60,6 +51,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void saveProduct(Product product) {
+        productCountRepository.save(product.getProductCount());
         productRepository.save(product);
     }
     
@@ -82,9 +74,4 @@ public class ProductServiceImpl implements ProductService {
     public void saveProductType(ProductType productType) {
         productTypeRepository.save(productType);
     }
-
-	@Override
-	public ProductCount getProductCountByProductId(long id) {
-		return productCountRepository.getProductCountByProductId(id);
-	}
 }

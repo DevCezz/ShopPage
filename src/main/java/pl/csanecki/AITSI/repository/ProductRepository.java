@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> getProductByProductType(ProductType productType);
-    @Query("SELECT p FROM Product p JOIN FETCH p.productType WHERE p.id = (:id)")
+    @Query("SELECT p FROM Product p JOIN FETCH p.productType JOIN FETCH p.productCount WHERE p.id = (:id)")
     Product getProductByProductId(@Param("id") long id);
     Product getProductByProducerAndModel(String producer, String model);
 }

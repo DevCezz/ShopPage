@@ -40,10 +40,10 @@
 							<div th:text="${product.getDescription()}"></div>
 							<br>
 
-							<div th:text="'Dostępna ilość produktów: ' + ${productCount.getAvaiableAmount()}"></div>
+							<div th:text="'Dostępna ilość produktów: ' + ${product.productCount.availableAmount}"></div>
 
-							<div th:text="${productCount.getPeopleBought()} + ' osób kupiło ' + 
-								${productCount.getItemBought()} + ' przedmiotów.'"></div>
+							<div th:text="${product.productCount.peopleBought} + ' osób kupiło ' +
+								${product.productCount.itemBought} + ' przedmiotów.'"></div>
 							<br>
 
 							<div class="buttons-down">

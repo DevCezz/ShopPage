@@ -53,11 +53,17 @@
                        class="login-error"></label>
                 <br>
 
-                <input type="number" id="prize" name="prize" min="0" value="0" step=".01" th:field="*{prize}"
+                <input type="number" id="prize" name="prize" min="0" value="0" step=".01" th:field="*{prize}" th:default="0.01"
                        th:placeholder="Cena" class="form-control login-input" />
                 <label th:if="${#fields.hasErrors('prize')}" th:errors="*{prize}"
                        class="login-error"></label>
+                <br>
 
+                <input type="number" id="availableAmount" name="availableAmount" min="0" value="0" step="1" th:default="0"
+                       th:field="*{productCount.availableAmount}" th:placeholder="'Ilość dotępnych sztuk'"
+                       class="form-control login-input" />
+                <label th:if="${#fields.hasErrors('productCount.availableAmount')}"
+                       th:errors="*{productCount.availableAmount}" class="login-error"></label>
                 <br>
 
                 <div class="button-center">

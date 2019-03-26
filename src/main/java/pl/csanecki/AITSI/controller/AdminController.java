@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.csanecki.AITSI.entity.Product;
+import pl.csanecki.AITSI.entity.ProductCount;
 import pl.csanecki.AITSI.entity.ProductType;
 import pl.csanecki.AITSI.service.ProductService;
 
@@ -73,8 +74,9 @@ public class AdminController {
     
     @GetMapping("/addProduct")
     public String getFormForProduct(@ModelAttribute("product") Product product, Model model) {
-        if(product == null)
+        if(product == null) {
             product = new Product();
+        }
 
         List<ProductType> productTypes = productService.getAllCategories();
 
@@ -85,8 +87,8 @@ public class AdminController {
     }
 
     @PostMapping("/addProduct")
-    public String postFormForProduct(@Valid Product product, BindingResult bindingResult,
-                                     Model model, RedirectAttributes redirectAttributes) {
+    public String postFormForProduct(@Valid Product product, BindingResult bindingResult, Model model,
+                                     RedirectAttributes redirectAttributes) {
         Product productExists = productService.getProductByProducerAndModel(product.getProducer(), product.getModel());
 
         if(productExists != null && product.getProductId() == 0) {

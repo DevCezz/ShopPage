@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "PRODUCT")
@@ -31,12 +32,17 @@ public class Product {
 
 	@Column(name = "PRIZE")
 	@DecimalMin(value = "0.01", message = "* Proszę wprowadź cenę produktu")
-	@Digits(integer = 10, fraction = 2, message = "* Proszę wprowadź cenę do 2 miejsc po przecinku")
+	@Digits(integer = 10, fraction = 2, message = "* Proszę wprowadź cenę do 2 miejsc po przecinku i o 10 przed przecinkiem")
+	@Pattern(regexp = "[\\d]+[.\\d{2}]?", message = "* Proszę wprowadzać tylko liczby (nie zostawiać pustego)")
 	private double prize;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "productTypeId")
 	private ProductType productType;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "productCountId")
+	private ProductCount productCount;
 
 	@Override
 	public String toString() {
@@ -47,6 +53,7 @@ public class Product {
 				", description='" + description + '\'' +
 				", prize=" + prize +
 				", productType=" + productType +
+				", productCount=" + productCount +
 				'}';
 	}
 
@@ -96,6 +103,14 @@ public class Product {
 
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
+	}
+
+	public ProductCount getProductCount() {
+		return productCount;
+	}
+
+	public void setProductCount(ProductCount productCount) {
+		this.productCount = productCount;
 	}
 }
 

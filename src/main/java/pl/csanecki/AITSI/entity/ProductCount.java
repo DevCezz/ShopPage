@@ -1,53 +1,59 @@
 package pl.csanecki.AITSI.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "PRODUCT_COUNT")
 public class ProductCount {
 	@Id
-	@Column(name = "PRODUCT_ID")
-	private long productId;
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
-	private Product product;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "PRODUCT_COUNT_ID")
+	private long productCountId;
 
+	@Min(value = 0, message = "* Proszę wprowadź liczbę nieujemną dostępnej ilości produktu")
+	@Pattern(regexp = "[\\d]{10}", message = "* Proszę wprowadzać tylko liczby (do 10 znaków)")
 	@Column(name = "AVAILABLE_AMOUNT")
-	private int avaiableAmount;
+	private int availableAmount;
 	
 	@Column(name = "PEOPLE_BOUGHT")
 	private int peopleBought;
 	
 	@Column(name = "ITEM_BOUGHT")
 	private int itemBought;
-	
+
+	public ProductCount() {
+		this.peopleBought = 0;
+		this.itemBought = 0;
+	}
+
 	@Override
 	public String toString() {
-		return "ProductCount [product=" + product + ", avaiableAmount=" + avaiableAmount +
-				", peopleBought=" + peopleBought + ", itemBought=" + itemBought + "]";
+		return "ProductCount{" +
+				"productCountId=" + productCountId +
+				", availableAmount=" + availableAmount +
+				", peopleBought=" + peopleBought +
+				", itemBought=" + itemBought +
+				'}';
 	}
 
-	public Product getProduct() {
-		return product;
+	public long getProductCountId() {
+		return productCountId;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProductCountId(long productCountId) {
+		this.productCountId = productCountId;
 	}
 
-	public int getAvaiableAmount() {
-		return avaiableAmount;
+	public int getAvailableAmount() {
+		return availableAmount;
 	}
 
-	public void setAvaiableAmount(int avaiableAmount) {
-		this.avaiableAmount = avaiableAmount;
+	public void setAvailableAmount(int availableAmount) {
+		this.availableAmount = availableAmount;
 	}
 
 	public int getPeopleBought() {
