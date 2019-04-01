@@ -1,22 +1,26 @@
 package pl.csanecki.AITSI.controller;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import pl.csanecki.AITSI.entity.Product;
-import pl.csanecki.AITSI.entity.ProductCount;
 import pl.csanecki.AITSI.entity.ProductType;
 import pl.csanecki.AITSI.service.ProductService;
-
-import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class AdminController {
@@ -27,6 +31,13 @@ public class AdminController {
         this.productService = productService;
     }
 
+    @InitBinder
+    public void initBinder(WebDataBinder webBinder) {
+    	StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+    	
+    	webBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
+    
     @GetMapping("/addCategory")
     public String getFormForCategory(@ModelAttribute("category") ProductType productType, Model model) {
         if(productType == null)
@@ -40,17 +51,19 @@ public class AdminController {
     @PostMapping("/addCategory")
     public String postFormForCategory(@Valid @ModelAttribute("category") ProductType productType,
                                       BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
-    	String nameOfProductTypeInCapitals = productType.getName().toUpperCase();
-        ProductType productTypeExists = productService.getProductTypeByName(nameOfProductTypeInCapitals);
+    	if(productType.getName() != null) {
+    		String nameOfProductTypeInCapitals = productType.getName().toUpperCase();
+            ProductType productTypeExists = productService.getProductTypeByName(nameOfProductTypeInCapitals);
 
-        productType.setName(nameOfProductTypeInCapitals);
-        
-        if(productTypeExists != null && productType.getProductTypeId() == 0) {
-            bindingResult
-                    .rejectValue("name", "error.productType",
-                            "* Istnieje już w bazie taka kategoria");
-        }
-
+            productType.setName(nameOfProductTypeInCapitals);
+                    
+            if(productTypeExists != null && productType.getProductTypeId() == 0) {
+                bindingResult
+                        .rejectValue("name", "error.productType",
+                                "* Istnieje już w bazie taka kategoria");
+            }
+    	}
+    		
         if(bindingResult.hasErrors()) {
             return "addCategory";
         } else {
