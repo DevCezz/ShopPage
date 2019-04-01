@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.csanecki.AITSI.entity.Cart;
 import pl.csanecki.AITSI.entity.Product;
 import pl.csanecki.AITSI.entity.ProductType;
 import pl.csanecki.AITSI.service.ProductService;
@@ -17,10 +18,12 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
     private ProductService productService;
+    private Cart cart;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, Cart cart) {
         this.productService = productService;
+        this.cart = cart;
     }
 
     @GetMapping()
@@ -28,7 +31,7 @@ public class ProductController {
         ProductType productType = productService.getProductTypeById(categoryId);
         List<Product> listOfProducts = productService.getProductsByCategory(categoryId);
         String productTypeName = NameFormatter.getNameWithFirstCapitalLetter(productType.getName());
-        
+
         model.addAttribute("category", productType);
         model.addAttribute("categoryName", productTypeName);
         model.addAttribute("products", listOfProducts);
@@ -39,9 +42,9 @@ public class ProductController {
     @GetMapping("/product")
     public String getProductById(@RequestParam("productId") long productId, Model model) {
         Product product = productService.getProductById(productId);
-        
+
         model.addAttribute("product", product);
-        
+
         return "product";
     }
 }

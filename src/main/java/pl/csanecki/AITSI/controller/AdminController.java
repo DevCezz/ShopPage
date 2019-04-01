@@ -102,12 +102,15 @@ public class AdminController {
     @PostMapping("/addProduct")
     public String postFormForProduct(@Valid Product product, BindingResult bindingResult, Model model,
                                      RedirectAttributes redirectAttributes) {
-        Product productExists = productService.getProductByProducerAndModel(product.getProducer(), product.getModel());
+        if(product.getProducer() != null && product.getModel() != null) {
+            Product productExists = productService.getProductByProducerAndModel(
+                    product.getProducer(), product.getModel());
 
-        if(productExists != null && product.getProductId() == 0) {
-            bindingResult
-                    .rejectValue("model", "error.product",
-                            "* Istnieje już w bazie product o takim modelu tego producenta");
+            if(productExists != null && product.getProductId() == 0) {
+                bindingResult
+                        .rejectValue("model", "error.product",
+                                "* Istnieje już w bazie product o takim modelu tego producenta");
+            }
         }
 
         if(bindingResult.hasErrors()) {

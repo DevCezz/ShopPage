@@ -1,10 +1,8 @@
 package pl.csanecki.AITSI.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "PRODUCT_COUNT")
@@ -14,16 +12,16 @@ public class ProductCount {
 	@Column(name = "PRODUCT_COUNT_ID")
 	private long productCountId;
 
-	@Min(value = 0, message = "* Proszę wprowadź liczbę nieujemną dostępnej ilości produktu")
-	@Pattern(regexp = "[\\d]{10}", message = "* Proszę wprowadzać tylko liczby (do 10 znaków)")
 	@Column(name = "AVAILABLE_AMOUNT")
-	private int availableAmount;
+	@NotNull(message = "* Proszę podaj dostępną ilość produktu")
+	@Min(value = 0, message = "* Proszę wprowadź liczbę nieujemną dostępnej ilości produktu")
+	private Integer availableAmount;
 	
 	@Column(name = "PEOPLE_BOUGHT")
-	private int peopleBought;
+	private Integer peopleBought;
 	
 	@Column(name = "ITEM_BOUGHT")
-	private int itemBought;
+	private Integer itemBought;
 
 	public ProductCount() {
 		this.peopleBought = 0;
@@ -48,27 +46,27 @@ public class ProductCount {
 		this.productCountId = productCountId;
 	}
 
-	public int getAvailableAmount() {
+	public Integer getAvailableAmount() {
 		return availableAmount;
 	}
 
-	public void setAvailableAmount(int availableAmount) {
+	public void setAvailableAmount(Integer availableAmount) {
 		this.availableAmount = availableAmount;
 	}
 
-	public int getPeopleBought() {
+	public Integer getPeopleBought() {
 		return peopleBought;
 	}
 
-	public void setPeopleBought(int peopleBought) {
+	public void setPeopleBought(Integer peopleBought) {
 		this.peopleBought = peopleBought;
 	}
 
-	public int getItemBought() {
+	public Integer getItemBought() {
 		return itemBought;
 	}
 
-	public void setItemBought(int itemBought) {
+	public void setItemBought(Integer itemBought) {
 		this.itemBought = itemBought;
 	}
 }

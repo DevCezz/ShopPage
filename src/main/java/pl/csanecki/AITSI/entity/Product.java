@@ -3,10 +3,11 @@ package pl.csanecki.AITSI.entity;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "PRODUCT")
@@ -17,8 +18,8 @@ public class Product {
 	private long productId;
 	
 	@Column(name = "PRODUCER")
-	@NotEmpty(message = "* Proszę podaj nazwę producenta")
 	@Length(min = 2, max = 50, message = "* Proszę podaj nazwę producenta zawierającą od 2 do 50 znaków")
+	@NotEmpty(message = "* Proszę podaj nazwę producenta")
 	private String producer;
 
 	@Column(name = "MODEL")
@@ -31,15 +32,17 @@ public class Product {
 	private String description;
 
 	@Column(name = "PRIZE")
+	@Digits(integer = 10, fraction = 2,
+			message = "* Proszę wprowadź cenę do 2 miejsc po przecinku i o 10 przed przecinkiem")
 	@DecimalMin(value = "0.01", message = "* Proszę wprowadź cenę produktu")
-	@Digits(integer = 10, fraction = 2, message = "* Proszę wprowadź cenę do 2 miejsc po przecinku i o 10 przed przecinkiem")
-	@Pattern(regexp = "[\\d]+[.\\d{2}]?", message = "* Proszę wprowadzać tylko liczby (nie zostawiać pustego)")
-	private double prize;
+	@NotNull(message = "* Proszę podaj cenę")
+	private Double prize;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "productTypeId")
 	private ProductType productType;
 
+	@Valid
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "productCountId")
 	private ProductCount productCount;
@@ -89,11 +92,11 @@ public class Product {
 		this.description = description;
 	}
 
-	public double getPrize() {
+	public Double getPrize() {
 		return prize;
 	}
 
-	public void setPrize(double prize) {
+	public void setPrize(Double prize) {
 		this.prize = prize;
 	}
 

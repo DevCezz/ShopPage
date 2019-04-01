@@ -48,9 +48,15 @@
 
 							<div class="buttons-down">
 								<div class="unit-ord-but">
-									<div class="unit-button">
-										<a class="unit-buy" th:href="@{/cart}">Dodaj do koszyka</a>
-									</div>
+									<form th:action="@{/order/addToCart}" th:method="post" class="unit-button"
+										  th:object="${product}">
+										<input type="hidden" id="id" name="id" th:field="*{productId}" />
+										<input type="hidden" id="producer" name="producer" th:field="*{producer}" />
+										<input type="hidden" id="model" name="model" th:field="*{model}" />
+										<input type="hidden" id="prize" name="prize" th:field="*{prize}" />
+										<button class="unit-buy" type="submit" name="submit" value=""
+												th:text="'Dodaj do koszyka'" ></button>
+									</form>
 									<th:block sec:authorize="hasAuthority('ADMIN')">
 										<div class="unit-button">
 											<a class="unit-buy" th:href="@{/editProduct(productId=${product
