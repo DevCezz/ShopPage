@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pl.csanecki.AITSI.entity.Cart;
@@ -34,10 +35,13 @@ public class OrderController {
     }
 
 	@PostMapping("/addToCart/{productId}")
-    public String addProductToCart(@PathVariable("productId") long productId, Model model) {
+    public String addProductToCart(@PathVariable("productId") long productId, 
+    		@RequestParam(value="amount", required=false) String amount, Model model) {
 		Product product = productService.getProductById(productId);
         cart.addProduct(product);
 
+        System.out.println(amount);
+        
         model.addAttribute("cart", cart);
 
         return "redirect:/order/cart";

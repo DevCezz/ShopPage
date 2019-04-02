@@ -46,11 +46,13 @@
                         <span class="icon-tooltip">Koszyk</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="glyphicon glyphicon-user icon" th:href="@{/login}">
-                        <span class="icon-tooltip">Dane użytkownika</span>
-                    </a>
-                </li>
+                <th:block sec:authorize="isAnonymous()">
+	                <li class="nav-item">
+	                    <a class="glyphicon glyphicon-user icon" th:href="@{/login}">
+	                        <span class="icon-tooltip">Dane użytkownika</span>
+	                    </a>
+	                </li>
+                </th:block>
                 <th:block sec:authorize="isAuthenticated()">
                     <li class="nav-item">
                         <a class="glyphicon glyphicon-log-out icon" th:href="@{/logout}">

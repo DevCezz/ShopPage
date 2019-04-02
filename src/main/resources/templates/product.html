@@ -40,7 +40,11 @@
 							<div th:text="${product.getDescription()}"></div>
 							<br>
 
-							<div th:text="'Dostępna ilość produktów: ' + ${product.productCount.availableAmount}"></div>
+							<div th:inline="text">
+								Dostępna ilość produktów: 
+								<span id="unit-available" th:text="${product.productCount.availableAmount}"></span>
+							</div>
+							
 
 							<div th:text="${product.productCount.peopleBought} + ' osób kupiło ' +
 								${product.productCount.itemBought} + ' przedmiotów.'"></div>
@@ -48,11 +52,21 @@
 
 							<div class="buttons-down">
 								<div class="unit-ord-but">
-									<form th:action="${'/order/addToCart/' + product.productId}" 
-											th:method="post" class="unit-button">
-										<button class="unit-buy" type="submit" name="submit" value=""
-												th:text="'Dodaj do koszyka'" ></button>
-									</form>
+									<th:block sec:authorize="hasAuthority('USER')">
+										<form th:action="${'/order/addToCart/' + product.productId}" 
+												th:method="post" class="unit-button">
+											<div class="prod-amount">
+												<span class="amount-label">Liczba sztuk: </span>
+												<button class="button-inc" type="button" value="minus">-</button>
+												<span id="amount" th:name="amount">1</span>
+												<button class="button-inc" type="button" value="plus">+</button>
+											</div>
+											
+											<button class="unit-buy" type="submit" name="submit" value=""
+													th:text="'Dodaj do koszyka'" ></button>
+										</form>
+									</th:block>
+									
 									<th:block sec:authorize="hasAuthority('ADMIN')">
 										<div class="unit-button">
 											<a class="unit-buy" th:href="@{/editProduct(productId=${product
