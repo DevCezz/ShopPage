@@ -38,6 +38,17 @@ public class ProductCount {
 				'}';
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((availableAmount == null) ? 0 : availableAmount.hashCode());
+		result = prime * result + ((itemBought == null) ? 0 : itemBought.hashCode());
+		result = prime * result + ((peopleBought == null) ? 0 : peopleBought.hashCode());
+		result = prime * result + (int) (productCountId ^ (productCountId >>> 32));
+		return result;
+	}
+
 	public long getProductCountId() {
 		return productCountId;
 	}

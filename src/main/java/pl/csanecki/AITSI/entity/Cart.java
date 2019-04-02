@@ -3,6 +3,7 @@ package pl.csanecki.AITSI.entity;
 import org.springframework.web.context.request.RequestContextHolder;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -25,9 +26,19 @@ public class Cart {
         this.orderDate = orderDate;
     }
 
-    public void addProduct(Product product) {
-        OrderProduct orderProduct = new OrderProduct(product, 1);
-        orderProducts.add(orderProduct);
+    public void addProductWithAmount(Product product, int amount) {
+        OrderProduct orderProduct = new OrderProduct(product, amount);
+        
+        if(this.orderProducts.contains(orderProduct)) {
+        	for (Iterator<OrderProduct> it = this.orderProducts.iterator(); it.hasNext(); ) {
+        		OrderProduct f = it.next();
+                if (f.equals(orderProduct))
+                    f.addAmount(amount);
+            }
+        	orderProduct.addAmount(amount);
+        } else {
+            orderProducts.add(orderProduct);        	
+        }
     }
 
     @Override

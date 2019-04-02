@@ -36,11 +36,9 @@ public class OrderController {
 
 	@PostMapping("/addToCart/{productId}")
     public String addProductToCart(@PathVariable("productId") long productId, 
-    		@RequestParam(value="amount", required=false) String amount, Model model) {
+    		@RequestParam(value="amount", required=false) int amount, Model model) {
 		Product product = productService.getProductById(productId);
-        cart.addProduct(product);
-
-        System.out.println(amount);
+        cart.addProductWithAmount(product, amount);
         
         model.addAttribute("cart", cart);
 

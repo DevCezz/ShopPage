@@ -17,6 +17,10 @@ public class OrderProduct {
                 '}';
     }
 
+    public void addAmount(int additionAmount) {
+    	this.amount += additionAmount;
+    }
+    
     public Product getProduct() {
         return product;
     }
@@ -32,4 +36,29 @@ public class OrderProduct {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((product == null) ? 0 : product.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OrderProduct other = (OrderProduct) obj;
+		if (product == null) {
+			if (other.product != null)
+				return false;
+		} else if (!product.equals(other.product))
+			return false;
+		return true;
+	}
 }

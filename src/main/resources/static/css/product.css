@@ -132,7 +132,7 @@ h2 > a:hover:before {
 	margin-right: 10px;
 }
 
-#amount {
+#amount-num {
 	float: left;
     padding: 8px 0;
 	margin: 0 5px;
