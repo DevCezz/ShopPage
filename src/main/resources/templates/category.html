@@ -23,7 +23,7 @@
 			<h1 th:text="'Kategoria: ' + ${categoryName}"></h1>
 			
 			<th:block sec:authorize="hasAuthority('ADMIN')">
-				<div class="cat-button" style="left: 200px">
+				<div class="cat-button">
 					<a class="cat-edit" th:href="@{/editCategory(categoryId=${category.getProductTypeId()})}">Edytuj</a>
 				</div>
 			</th:block>
