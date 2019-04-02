@@ -5,20 +5,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import pl.csanecki.AITSI.entity.Cart;
 import pl.csanecki.AITSI.entity.Product;
+import pl.csanecki.AITSI.service.ProductService;
 
 @Controller
 @RequestMapping("/order")
+@SessionAttributes("cart")
 public class OrderController {
+	private ProductService productService;
     private Cart cart;
 
     @Autowired
-    public OrderController(Cart cart) {
-        this.cart = cart;
-    }
+    public OrderController(ProductService productService, Cart cart) {
+		this.productService = productService;
+		this.cart = cart;
+	}
 
     @GetMapping("/cart")
     public String showCart(Model model) {
@@ -27,9 +34,9 @@ public class OrderController {
         return "cart";
     }
 
-    @PostMapping("/addToCart")
-    public String addProductToCart(@ModelAttribute("product") Product product, Model model) {
-        cart = new Cart();
+	@PostMapping("/addToCart/{productId}")
+    public String addProductToCart(@PathVariable("productId") long productId, Model model) {
+		Product product = productService.getProductById(productId);
         cart.addProduct(product);
 
         model.addAttribute("cart", cart);
