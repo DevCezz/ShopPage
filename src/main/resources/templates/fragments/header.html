@@ -41,11 +41,13 @@
             </ul>
 
             <ul class="navbar-nav ml-auto" style="margin-right: 50px">
-                <li class="nav-item">
-                    <a class="glyphicon glyphicon-shopping-cart icon" th:href="@{/order/cart}">
-                        <span class="icon-tooltip">Koszyk</span>
-                    </a>
-                </li>
+                <th:block sec:authorize="hasAuthority('USER')">
+	                <li class="nav-item">
+	                    <a class="glyphicon glyphicon-shopping-cart icon" th:href="@{/order/cart}">
+	                        <span class="icon-tooltip">Koszyk</span>
+	                    </a>
+	                </li>
+                </th:block>
                 <th:block sec:authorize="isAnonymous()">
 	                <li class="nav-item">
 	                    <a class="glyphicon glyphicon-user icon" th:href="@{/login}">

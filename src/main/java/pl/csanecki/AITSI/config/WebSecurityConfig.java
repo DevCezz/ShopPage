@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/h2_console/**").permitAll()
 				.antMatchers("/addProduct").hasAuthority("ADMIN").anyRequest().authenticated()
 				.antMatchers("/addCategory").hasAuthority("ADMIN").anyRequest().authenticated()
-				.antMatchers("/cart").hasAuthority("ADMIN").anyRequest().authenticated()
+				.antMatchers("/cart").hasAuthority("USER").anyRequest().authenticated()
 				.and().csrf().disable().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")
 				.defaultSuccessUrl("/main", true)
