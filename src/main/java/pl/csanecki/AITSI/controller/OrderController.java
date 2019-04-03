@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.csanecki.AITSI.entity.Cart;
 import pl.csanecki.AITSI.entity.Product;
@@ -36,21 +37,21 @@ public class OrderController {
 
 	@PostMapping("/addToCart/{productId}")
     public String addProductToCart(@PathVariable("productId") long productId, 
-    		@RequestParam(value="amount", required=false) int amount, Model model) {
+    		@RequestParam(value="amount", required=false) int amount, Model model, RedirectAttributes redirectAttributes) {
 		Product product = productService.getProductById(productId);
 		
 		int existingAmountOfProductInCart = cart.getAmountOfProductInCart(product);
 		
-		model.addAttribute("cart", cart);
-		
 		if(existingAmountOfProductInCart + amount > product.getProductCount().getAvailableAmount()) {
-			model.addAttribute("errorAmount", "* Nie można dodać większej ilości niż jest na magazynie");
+			redirectAttributes.addFlashAttribute("errorAmount", "* Nie można dodać większej ilości niż jest na magazynie");
 			
 			return "redirect:/products/product?productId=" + productId;
 		}
 			
         cart.addProductWithAmount(product, amount);
 
+        model.addAttribute("cart", cart);
+        
         return "redirect:/order/cart";
     }
 }
