@@ -139,7 +139,11 @@ h2 > a:hover:before {
 	width: 25px;
 }
 
-
+.prod-err {
+    color: red;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
 
 
 

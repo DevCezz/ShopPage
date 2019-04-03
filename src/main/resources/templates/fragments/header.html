@@ -43,7 +43,10 @@
             <ul class="navbar-nav ml-auto" style="margin-right: 50px">
 	            <th:block sec:authorize="isAuthenticated()">
                     <li class="nav-item user-info">
-						<span>Zalogowany jako&nbsp;</span> <span sec:authentication="name"></span> <span sec:authentication="authorities"></span>
+						<span>Zalogowany jako&nbsp;</span>
+                        <span sec:authentication="name"></span>
+                        &nbsp;
+                        <span sec:authentication="authorities"></span>
                     </li>
 	            </th:block>
                 <th:block sec:authorize="hasAuthority('USER')">

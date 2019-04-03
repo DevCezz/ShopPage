@@ -28,7 +28,7 @@
 		</div>
 		
         <div align="center" th:if="${errorAmount}">
-			<p style="color: yellow;" th:text="${errorAmount}"></p>
+			<p class="prod-err" th:text="${errorAmount}"></p>
 		</div>
 		
 		<div class="container">
@@ -48,7 +48,6 @@
 								Dostępna ilość produktów: 
 								<span id="unit-available" th:text="${product.productCount.availableAmount}"></span>
 							</div>
-							
 
 							<div th:text="${product.productCount.peopleBought} + ' osób kupiło ' +
 								${product.productCount.itemBought} + ' przedmiotów.'"></div>
@@ -63,7 +62,8 @@
 												<span class="amount-label">Liczba sztuk: </span>
 												<button class="button-inc" type="button" value="minus">-</button>
 													<span id="amount-num">1</span>
-												<button class="button-inc" type="button" value="plus">+</button>
+												<button class="button-inc" type="button" value="plus"
+														style="margin-right: 20px">+</button>
 											</div>
 											
 											<input type="hidden" name="amount" id="amount">

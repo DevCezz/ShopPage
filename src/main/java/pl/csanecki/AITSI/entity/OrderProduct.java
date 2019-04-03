@@ -1,32 +1,37 @@
 package pl.csanecki.AITSI.entity;
 
+import pl.csanecki.AITSI.entity.embeddedId.OrderProductId;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ORDERED_PRODUCT")
 public class OrderProduct {
-    private Product product;
+    @EmbeddedId
+    private OrderProductId orderProductId;
+
+    @Column(name = "ORDERED_AMOUNT")
     private int amount;
 
-    public OrderProduct(Product product, int amount) {
-        this.product = product;
+    public OrderProduct(OrderProductId orderProductId, int amount) {
+        this.orderProductId = orderProductId;
         this.amount = amount;
     }
 
     @Override
     public String toString() {
         return "OrderProduct{" +
-                "product=" + product +
+                "orderProductId=" + orderProductId +
                 ", amount=" + amount +
                 '}';
     }
 
-    public void addAmount(int additionAmount) {
-    	this.amount += additionAmount;
-    }
-    
-    public Product getProduct() {
-        return product;
+    public OrderProductId getOrderProductId() {
+        return orderProductId;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setOrderProductId(OrderProductId orderProductId) {
+        this.orderProductId = orderProductId;
     }
 
     public int getAmount() {
@@ -37,11 +42,11 @@ public class OrderProduct {
         this.amount = amount;
     }
 
-	@Override
+    @Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((product == null) ? 0 : product.hashCode());
+		result = prime * result + ((orderProductId.getProduct() == null) ? 0 : orderProductId.getProduct().hashCode());
 		return result;
 	}
 
@@ -54,10 +59,10 @@ public class OrderProduct {
 		if (getClass() != obj.getClass())
 			return false;
 		OrderProduct other = (OrderProduct) obj;
-		if (product == null) {
-			if (other.product != null)
+		if (orderProductId.getProduct() == null) {
+			if (other.orderProductId.getProduct() != null)
 				return false;
-		} else if (!product.equals(other.product))
+		} else if (!orderProductId.getProduct().equals(other.orderProductId.getProduct()))
 			return false;
 		return true;
 	}

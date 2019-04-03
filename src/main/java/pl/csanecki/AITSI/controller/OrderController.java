@@ -43,7 +43,9 @@ public class OrderController {
 		int existingAmountOfProductInCart = cart.getAmountOfProductInCart(product);
 		
 		if(existingAmountOfProductInCart + amount > product.getProductCount().getAvailableAmount()) {
-			redirectAttributes.addFlashAttribute("errorAmount", "* Nie można dodać większej ilości niż jest na magazynie");
+			redirectAttributes.addFlashAttribute("errorAmount", "* Nie można dodać większej ilości " +
+                    "niż jest na magazynie (zamówiono " + existingAmountOfProductInCart + "/" +
+                    product.getProductCount().getAvailableAmount() + ")");
 			
 			return "redirect:/products/product?productId=" + productId;
 		}
@@ -52,6 +54,11 @@ public class OrderController {
 
         model.addAttribute("cart", cart);
         
+        return "redirect:/order/cart";
+    }
+
+    @PostMapping("/postToOrders")
+    public String askForAddress(Model model) {
         return "redirect:/order/cart";
     }
 }
