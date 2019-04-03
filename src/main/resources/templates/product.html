@@ -26,7 +26,11 @@
 				   th:text="'Powrót do kategorii: ' + ${product.getProductType().getName()}"></a>
 			</h2>
 		</div>
-
+		
+        <div align="center" th:if="${errorAmount}">
+			<p style="color: yellow;" th:text="${errorAmount}"></p>
+		</div>
+		
 		<div class="container">
 			<div class="row">
 				<div class="col-sm">

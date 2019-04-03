@@ -30,15 +30,25 @@ public class Cart {
         OrderProduct orderProduct = new OrderProduct(product, amount);
         
         if(this.orderProducts.contains(orderProduct)) {
-        	for (Iterator<OrderProduct> it = this.orderProducts.iterator(); it.hasNext(); ) {
-        		OrderProduct f = it.next();
-                if (f.equals(orderProduct))
-                    f.addAmount(amount);
+        	for (Iterator<OrderProduct> iterator = this.orderProducts.iterator(); iterator.hasNext(); ) {
+        		OrderProduct orderProductInSet = iterator.next();
+                if (orderProductInSet.equals(orderProduct))
+                	orderProductInSet.addAmount(amount);
             }
         	orderProduct.addAmount(amount);
         } else {
             orderProducts.add(orderProduct);        	
         }
+    }
+    
+    public int getAmountOfProductInCart(Product product) {
+    	for (Iterator<OrderProduct> iterator = this.orderProducts.iterator(); iterator.hasNext(); ) {
+    		OrderProduct orderProduct = iterator.next();
+            if (orderProduct.getProduct().equals(product))
+                return orderProduct.getAmount();
+        }
+    	
+    	return 0;
     }
 
     @Override

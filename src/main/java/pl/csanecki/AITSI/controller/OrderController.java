@@ -38,12 +38,18 @@ public class OrderController {
     public String addProductToCart(@PathVariable("productId") long productId, 
     		@RequestParam(value="amount", required=false) int amount, Model model) {
 		Product product = productService.getProductById(productId);
+		
+		int existingAmountOfProductInCart = cart.getAmountOfProductInCart(product);
+		
+		model.addAttribute("cart", cart);
+		
+		if(existingAmountOfProductInCart + amount > product.getProductCount().getAvailableAmount()) {
+			model.addAttribute("errorAmount", "* Nie można dodać większej ilości niż jest na magazynie");
+			
+			return "redirect:/products/product?productId=" + productId;
+		}
+			
         cart.addProductWithAmount(product, amount);
-        
-        product.substractAmountOfProduct(amount);
-        productService.saveProduct(product);
-        
-        model.addAttribute("cart", cart);
 
         return "redirect:/order/cart";
     }
