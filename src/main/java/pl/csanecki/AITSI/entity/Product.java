@@ -47,6 +47,11 @@ public class Product {
 	@JoinColumn(name = "productCountId")
 	private ProductCount productCount;
 
+	public void substractAmountOfProduct(int amountToSubstract) {
+		int amount = productCount.getAvailableAmount();
+		this.productCount.setAvailableAmount(amount - amountToSubstract);
+	}
+	
 	@Override
 	public String toString() {
 		return "Product{" +

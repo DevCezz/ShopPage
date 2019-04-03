@@ -14,7 +14,7 @@
 </head>
 <body>
     <nav th:fragment="header" class="navbar navbar-expand-lg navbar-light nav-main">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" style="margin-left: 50px">
                 <li class="nav-item">
                     <a class="glyphicon glyphicon-home icon" th:href="@{/}">
@@ -41,6 +41,11 @@
             </ul>
 
             <ul class="navbar-nav ml-auto" style="margin-right: 50px">
+	            <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item user-info">
+						<span>Zalogowany jako&nbsp;</span> <span sec:authentication="name"></span> <span sec:authentication="authorities"></span>
+                    </li>
+	            </th:block>
                 <th:block sec:authorize="hasAuthority('USER')">
 	                <li class="nav-item">
 	                    <a class="glyphicon glyphicon-shopping-cart icon" th:href="@{/order/cart}">
@@ -51,7 +56,7 @@
                 <th:block sec:authorize="isAnonymous()">
 	                <li class="nav-item">
 	                    <a class="glyphicon glyphicon-user icon" th:href="@{/login}">
-	                        <span class="icon-tooltip">Dane użytkownika</span>
+	                        <span class="icon-tooltip">Zaloguj się</span>
 	                    </a>
 	                </li>
                 </th:block>

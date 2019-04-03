@@ -40,6 +40,9 @@ public class OrderController {
 		Product product = productService.getProductById(productId);
         cart.addProductWithAmount(product, amount);
         
+        product.substractAmountOfProduct(amount);
+        productService.saveProduct(product);
+        
         model.addAttribute("cart", cart);
 
         return "redirect:/order/cart";
