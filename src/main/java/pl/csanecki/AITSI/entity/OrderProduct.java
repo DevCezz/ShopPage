@@ -1,37 +1,32 @@
 package pl.csanecki.AITSI.entity;
 
-import pl.csanecki.AITSI.entity.embeddedId.OrderProductId;
-
-import javax.persistence.*;
-
-@Entity
-@Table(name = "ORDERED_PRODUCT")
 public class OrderProduct {
-    @EmbeddedId
-    private OrderProductId orderProductId;
-
-    @Column(name = "ORDERED_AMOUNT")
+    private Product product;
     private int amount;
 
-    public OrderProduct(OrderProductId orderProductId, int amount) {
-        this.orderProductId = orderProductId;
+    public OrderProduct(Product product, int amount) {
+        this.product = product;
         this.amount = amount;
     }
 
     @Override
     public String toString() {
         return "OrderProduct{" +
-                "orderProductId=" + orderProductId +
+                "product=" + product +
                 ", amount=" + amount +
                 '}';
     }
 
-    public OrderProductId getOrderProductId() {
-        return orderProductId;
+    public void addAmount(int additionAmount) {
+    	this.amount += additionAmount;
+    }
+    
+    public Product getProduct() {
+        return product;
     }
 
-    public void setOrderProductId(OrderProductId orderProductId) {
-        this.orderProductId = orderProductId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getAmount() {
@@ -46,7 +41,7 @@ public class OrderProduct {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((orderProductId.getProduct() == null) ? 0 : orderProductId.getProduct().hashCode());
+		result = prime * result + ((product == null) ? 0 : product.hashCode());
 		return result;
 	}
 
@@ -59,10 +54,10 @@ public class OrderProduct {
 		if (getClass() != obj.getClass())
 			return false;
 		OrderProduct other = (OrderProduct) obj;
-		if (orderProductId.getProduct() == null) {
-			if (other.orderProductId.getProduct() != null)
+		if (product == null) {
+			if (other.product != null)
 				return false;
-		} else if (!orderProductId.getProduct().equals(other.orderProductId.getProduct()))
+		} else if (!product.equals(other.product))
 			return false;
 		return true;
 	}
