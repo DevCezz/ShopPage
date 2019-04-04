@@ -1,6 +1,7 @@
 package pl.csanecki.AITSI.entity;
 
 import org.springframework.web.context.request.RequestContextHolder;
+import pl.csanecki.AITSI.entity.embedded.Address;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,6 +23,12 @@ public class Order {
 
     @Column(name = "DATE_ORDER")
     private Date orderDate;
+
+    @Embedded
+    private Address address;
+
+    @Column(name = "USER_EMAIL")
+    private String userEmail;
 
     public Order() {
         this.orderId = RequestContextHolder.currentRequestAttributes().getSessionId();
