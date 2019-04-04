@@ -1,7 +1,26 @@
 package pl.csanecki.AITSI.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ORDER_PRODUCT")
 public class OrderProduct {
+	@Id
+	@Column(name = "ORDER_PRODUCT_ID")
+	private long orderProductId;
+	
+	@OneToOne
+    @JoinColumn(name = "productId")
+    @MapsId
     private Product product;
+	
+	@Column(name = "AMOUNT")
     private int amount;
 
     public OrderProduct(Product product, int amount) {
