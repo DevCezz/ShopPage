@@ -1,12 +1,6 @@
 package pl.csanecki.AITSI.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ORDER_PRODUCT")
@@ -19,33 +13,59 @@ public class OrderProduct {
     @JoinColumn(name = "productId")
     @MapsId
     private Product product;
-	
+
+	@ManyToOne
+    @JoinColumn(name = "orderId")
+    private Order order;
+
 	@Column(name = "AMOUNT")
     private int amount;
 
+    public OrderProduct() {
+    }
+
     public OrderProduct(Product product, int amount) {
+        this.orderProductId = product.getProductId();
         this.product = product;
         this.amount = amount;
+    }
+
+    public void addAmount(int amount) {
+        this.amount += amount;
     }
 
     @Override
     public String toString() {
         return "OrderProduct{" +
-                "product=" + product +
+                "orderProductId=" + orderProductId +
+                ", product=" + product +
+                ", order=" + order +
                 ", amount=" + amount +
                 '}';
     }
 
-    public void addAmount(int additionAmount) {
-    	this.amount += additionAmount;
+    public long getOrderProductId() {
+        return orderProductId;
     }
-    
+
+    public void setOrderProductId(long orderProductId) {
+        this.orderProductId = orderProductId;
+    }
+
     public Product getProduct() {
         return product;
     }
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public int getAmount() {

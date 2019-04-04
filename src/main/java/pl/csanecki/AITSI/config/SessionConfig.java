@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.web.context.WebApplicationContext;
-import pl.csanecki.AITSI.entity.Cart;
+import pl.csanecki.AITSI.entity.Order;
 
 @Configuration
 public class SessionConfig {
@@ -14,7 +14,7 @@ public class SessionConfig {
             value = WebApplicationContext.SCOPE_SESSION,
             proxyMode = ScopedProxyMode.TARGET_CLASS
     )
-    public Cart cart() {
-        return new Cart();
+    public Order cart() {
+        return new Order();
     }
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import pl.csanecki.AITSI.entity.Cart;
+import pl.csanecki.AITSI.entity.Order;
 import pl.csanecki.AITSI.entity.Product;
 import pl.csanecki.AITSI.service.ProductService;
 
@@ -20,17 +20,17 @@ import pl.csanecki.AITSI.service.ProductService;
 @SessionAttributes("cart")
 public class OrderController {
 	private ProductService productService;
-    private Cart cart;
+    private Order order;
 
     @Autowired
-    public OrderController(ProductService productService, Cart cart) {
+    public OrderController(ProductService productService, Order order) {
 		this.productService = productService;
-		this.cart = cart;
+		this.order = order;
 	}
 
     @GetMapping("/cart")
     public String showCart(Model model) {
-        model.addAttribute("cart", cart);
+        model.addAttribute("cart", order);
 
         return "cart";
     }
@@ -40,7 +40,7 @@ public class OrderController {
     		@RequestParam(value="amount", required=false) int amount, Model model, RedirectAttributes redirectAttributes) {
 		Product product = productService.getProductById(productId);
 		
-		int existingAmountOfProductInCart = cart.getAmountOfProductInCart(product);
+		int existingAmountOfProductInCart = order.getAmountOfProductInCart(product);
 		
 		if(existingAmountOfProductInCart + amount > product.getProductCount().getAvailableAmount()) {
 			redirectAttributes.addFlashAttribute("errorAmount", "* Nie można dodać większej ilości " +
@@ -50,9 +50,9 @@ public class OrderController {
 			return "redirect:/products/product?productId=" + productId;
 		}
 			
-        cart.addProductWithAmount(product, amount);
+        order.addProductWithAmount(product, amount);
 
-        model.addAttribute("cart", cart);
+        model.addAttribute("cart", order);
         
         return "redirect:/order/cart";
     }

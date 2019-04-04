@@ -13,7 +13,7 @@
 		
 		<!-- Internal css -->
 		<link rel="stylesheet" th:href="@{/css/general.css}" />
-		<link rel="stylesheet" th:href="@{/css/cart.css}" />
+		<link rel="stylesheet" th:href="@{/css/order.css}" />
 	</head>
 	<body>
 		<nav th:replace="fragments/header :: header"/>
@@ -29,8 +29,8 @@
 		</div>
 		
 		<div class="container">
-			<th:block th:if="${cart.getOrderProducts().size() != 0}">
-				<table class="table table-cart">
+			<th:block th:if="${order.getOrderProducts().size() != 0}">
+				<table class="table table-order">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
@@ -41,7 +41,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="orderProduct, iteration : ${cart.getOrderProducts()}">
+						<tr th:each="orderProduct, iteration : ${order.getOrderProducts()}">
 							<th th:text="${iteration.count}" scope="row">1</th>
 							<td th:text="${orderProduct.getProduct().getProducer()} + ' '
 								+ ${orderProduct.getProduct().getModel()}"></td>
@@ -54,10 +54,10 @@
 				
 				<div class="order-summary">
 					<h3 class="order-desc">Całkowity koszt zamówienia:</h3>
-					<h2 class="order-sum" th:text="${#numbers.formatDecimal(#aggregates.sum(cart.orderProducts.![amount * product.prize]), 2, 2)} + ' zł'"></h2>
+					<h2 class="order-sum" th:text="${#numbers.formatDecimal(#aggregates.sum(order.orderProducts.![amount * product.prize]), 2, 2)} + ' zł'"></h2>
 				</div>
 			</th:block>
-			<div id="cart-empty" th:unless="${cart.getOrderProducts().size() != 0}">
+			<div id="order-empty" th:unless="${order.getOrderProducts().size() != 0}">
 				<h2>
 					<i class="glyphicon glyphicon-warning-sign"></i>
 					Brak produktów w koszyku!

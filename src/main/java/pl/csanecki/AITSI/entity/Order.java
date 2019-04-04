@@ -2,25 +2,35 @@ package pl.csanecki.AITSI.entity;
 
 import org.springframework.web.context.request.RequestContextHolder;
 
+import javax.persistence.*;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class Cart {
-    private String cartId;
+@Entity
+@Table(name = "ORDER_CART")
+public class Order {
+    @Id
+    @Column(name = "ORDER_ID")
+    private String orderId;
+
+    @Transient
     private Set<OrderProduct> orderProducts;
+
+    @Column(name = "SUM_OF_ORDER")
     private Double sum;
+
+    @Column(name = "DATE_ORDER")
     private Date orderDate;
 
-    public Cart() {
-        this.cartId = RequestContextHolder.currentRequestAttributes().getSessionId();
+    public Order() {
+        this.orderId = RequestContextHolder.currentRequestAttributes().getSessionId();
         this.orderProducts = new LinkedHashSet<>();
         this.sum = 0.0;
         this.orderDate = new Date();
     }
 
-    public Cart(Set<OrderProduct> orderProducts, Double sum, Date orderDate) {
+    public Order(Set<OrderProduct> orderProducts, Double sum, Date orderDate) {
         this.orderProducts = orderProducts;
         this.sum = sum;
         this.orderDate = orderDate;
@@ -30,20 +40,17 @@ public class Cart {
         OrderProduct orderProduct = new OrderProduct(product, amount);
         
         if(this.orderProducts.contains(orderProduct)) {
-        	for (Iterator<OrderProduct> iterator = this.orderProducts.iterator(); iterator.hasNext(); ) {
-        		OrderProduct orderProductInSet = iterator.next();
+            for (OrderProduct orderProductInSet : this.orderProducts) {
                 if (orderProductInSet.equals(orderProduct))
-                	orderProductInSet.addAmount(amount);
+                    orderProductInSet.addAmount(amount);
             }
-        	orderProduct.addAmount(amount);
         } else {
             orderProducts.add(orderProduct);        	
         }
     }
     
     public int getAmountOfProductInCart(Product product) {
-    	for (Iterator<OrderProduct> iterator = this.orderProducts.iterator(); iterator.hasNext(); ) {
-    		OrderProduct orderProduct = iterator.next();
+        for (OrderProduct orderProduct : this.orderProducts) {
             if (orderProduct.getProduct().equals(product))
                 return orderProduct.getAmount();
         }
@@ -53,20 +60,20 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Cart{" +
-                "cartId=" + cartId +
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
                 ", orderProducts=" + orderProducts +
                 ", sum=" + sum +
                 ", orderDate=" + orderDate +
                 '}';
     }
 
-    public String getCartId() {
-        return cartId;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setCartId(String cartId) {
-        this.cartId = cartId;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public Set<OrderProduct> getOrderProducts() {
