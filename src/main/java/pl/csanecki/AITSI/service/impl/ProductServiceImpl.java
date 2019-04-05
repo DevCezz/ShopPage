@@ -1,17 +1,16 @@
 package pl.csanecki.AITSI.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import pl.csanecki.AITSI.entity.Product;
-import pl.csanecki.AITSI.entity.ProductCount;
 import pl.csanecki.AITSI.entity.ProductType;
 import pl.csanecki.AITSI.repository.ProductCountRepository;
 import pl.csanecki.AITSI.repository.ProductRepository;
 import pl.csanecki.AITSI.repository.ProductTypeRepository;
 import pl.csanecki.AITSI.service.ProductService;
-import pl.csanecki.AITSI.util.NameFormatter;
-
-import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {

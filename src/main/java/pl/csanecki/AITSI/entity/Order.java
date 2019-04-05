@@ -15,7 +15,7 @@ public class Order {
     @Column(name = "ORDER_ID")
     private String orderId;
 
-    @Transient
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderProduct> orderProducts;
 
     @Column(name = "SUM_OF_ORDER")
@@ -64,46 +64,58 @@ public class Order {
     	
     	return 0;
     }
+        
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", orderProducts=" + orderProducts + ", sum=" + sum + ", orderDate="
+				+ orderDate + ", address=" + address + ", userEmail=" + userEmail + "]";
+	}
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId='" + orderId + '\'' +
-                ", orderProducts=" + orderProducts +
-                ", sum=" + sum +
-                ", orderDate=" + orderDate +
-                '}';
-    }
+	public String getOrderId() {
+		return orderId;
+	}
 
-    public String getOrderId() {
-        return orderId;
-    }
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
+	public Set<OrderProduct> getOrderProducts() {
+		return orderProducts;
+	}
 
-    public Set<OrderProduct> getOrderProducts() {
-        return orderProducts;
-    }
+	public void setOrderProducts(Set<OrderProduct> orderProducts) {
+		this.orderProducts = orderProducts;
+	}
 
-    public void setOrderProducts(Set<OrderProduct> orderProducts) {
-        this.orderProducts = orderProducts;
-    }
+	public Double getSum() {
+		return sum;
+	}
 
-    public Double getSum() {
-        return sum;
-    }
+	public void setSum(Double sum) {
+		this.sum = sum;
+	}
 
-    public void setSum(Double sum) {
-        this.sum = sum;
-    }
+	public Date getOrderDate() {
+		return orderDate;
+	}
 
-    public Date getOrderDate() {
-        return orderDate;
-    }
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
 }

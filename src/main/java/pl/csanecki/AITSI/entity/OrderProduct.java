@@ -6,16 +6,16 @@ import javax.persistence.*;
 @Table(name = "ORDER_PRODUCT")
 public class OrderProduct {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ORDER_PRODUCT_ID")
 	private long orderProductId;
 	
 	@OneToOne
-    @JoinColumn(name = "productId")
-    @MapsId
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
 	@ManyToOne
-    @JoinColumn(name = "orderId")
+    @JoinColumn(name = "ORDER_ID")
     private Order order;
 
 	@Column(name = "AMOUNT")

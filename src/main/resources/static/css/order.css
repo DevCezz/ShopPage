@@ -1,4 +1,4 @@
-.table-cart {
+.table-order {
 	color: #fff;
 	font-size: 15px;
     text-align: center;
@@ -47,7 +47,7 @@
 	font-size: 30px;
 }
 
-#cart-empty {
+#order-empty {
 	margin-top: 20px;
     color: red;
     text-align: center;
