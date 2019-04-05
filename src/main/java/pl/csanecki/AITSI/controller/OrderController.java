@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -83,20 +84,32 @@ public class OrderController {
     
     @PostMapping("/postToOrders")
     public String addOrder(@ModelAttribute("address") @Valid Address address, BindingResult bindingResult, 
-    		HttpSession session, Model model) {
+    		HttpSession session, HttpServletRequest request, Model model) {
         if(bindingResult.hasErrors()) {
             return "address";
         }
     	
         Order copyOrder = getCopyOfSessionOrder(order);
         
+        String userEmail = request.getUserPrincipal().getName();
+        
         copyOrder.setAddress(address);
-    	
+    	copyOrder.setUserEmail(userEmail);
+        
     	orderService.saveOrder(copyOrder);
 
     	session.invalidate();
     	order = new Order();
     	
+    	Set<Order> orders = orderService.getAllUniqueOrders();
+    	
+    	model.addAttribute("orders", orders);
+    	
+        return "orders";
+    }
+    
+    @GetMapping("/getOrders")
+    public String getOrders(Model model) {    	
     	Set<Order> orders = orderService.getAllUniqueOrders();
     	
     	model.addAttribute("orders", orders);

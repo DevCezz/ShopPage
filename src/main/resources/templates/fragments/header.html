@@ -49,6 +49,13 @@
                         <span sec:authentication="authorities"></span>
                     </li>
 	            </th:block>
+	            <th:block sec:authorize="hasAuthority('USER')">
+	                <li class="nav-item">
+	                    <a class="glyphicon glyphicon glyphicon-th icon" th:href="@{/order/getOrders}">
+	                        <span class="icon-tooltip">Zamówienia</span>
+	                    </a>
+	                </li>
+                </th:block>
                 <th:block sec:authorize="hasAuthority('USER')">
 	                <li class="nav-item">
 	                    <a class="glyphicon glyphicon-shopping-cart icon" th:href="@{/order/cart}">
