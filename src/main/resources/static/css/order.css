@@ -4,6 +4,10 @@
     text-align: center;
 }
 
+.button-center {
+    text-align: center;
+}
+
 .order-button {
 	display: inline;
     text-align: center;
@@ -53,7 +57,14 @@
     text-align: center;
 }
 
+.order-info {
+	color: #fff;
+	text-align: center;
+}
 
+.order-info-sm-bot-mar {
+	margin: 20px 0;
+}
 
 
 

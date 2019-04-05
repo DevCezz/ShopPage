@@ -2,9 +2,9 @@ package pl.csanecki.AITSI.controller;
 
 import java.util.Date;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ public class OrderController {
     public String showCart(Model model) {
         model.addAttribute("order", order);
 
-        return "cart";
+        return "order";
     }
 
 	@PostMapping("/addToCart/{productId}")
@@ -82,7 +82,8 @@ public class OrderController {
     }
     
     @PostMapping("/postToOrders")
-    public String addOrder(@ModelAttribute("address") @Valid Address address, BindingResult bindingResult, Model model) {
+    public String addOrder(@ModelAttribute("address") @Valid Address address, BindingResult bindingResult, 
+    		HttpSession session, Model model) {
         if(bindingResult.hasErrors()) {
             return "address";
         }
@@ -93,9 +94,10 @@ public class OrderController {
     	
     	orderService.saveOrder(copyOrder);
 
+    	session.invalidate();
     	order = new Order();
     	
-    	List<Order> orders = orderService.getAllOrders();
+    	Set<Order> orders = orderService.getAllUniqueOrders();
     	
     	model.addAttribute("orders", orders);
     	

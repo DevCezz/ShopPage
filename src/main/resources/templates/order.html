@@ -20,11 +20,18 @@
 		<div th:replace="fragments/header :: grad"/>
 		
 		<div class="titleText">
-			<h1>Zamówienia</h1>
+			<h1>Koszyk</h1>
 		</div>
 		
 		<div class="container">
 			<th:block th:if="${order.getOrderProducts().size() != 0}">
+				<div class="button-center">
+					<form th:action="@{/order/addAddress}" th:method="post" class="order-button">
+						<button class="order-confirm" type="submit" name="submit" value=""
+								th:text="Zamów" ></button>
+					</form>
+				</div>
+				
 				<table class="table table-order">
 					<thead>
 						<tr>
