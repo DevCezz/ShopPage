@@ -109,10 +109,17 @@ public class OrderController {
     }
     
     @GetMapping("/getOrders")
-    public String getOrders(Model model) {    	
-    	Set<Order> orders = orderService.getAllUniqueOrders();
+    public String getOrders(Model model, HttpServletRequest request) {
+    	Set<Order> orders = null;
+
+    	if(request.isUserInRole("ADMIN"))
+    		orders = orderService.getAllUniqueOrders();
+    	else if(request.isUserInRole("USER"))
+			orders = orderService.getUniqueOrdersByUserEmail();
     	
     	model.addAttribute("orders", orders);
+
+
     	
         return "orders";
     }
