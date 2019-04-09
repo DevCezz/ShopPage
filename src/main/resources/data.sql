@@ -4,11 +4,13 @@ INSERT INTO ROLE VALUES
 
 INSERT INTO USER VALUES
 (1, 1, 'admin@admin.pl', 'Admin', 'Admin', '$2a$10$iLpYZ2Xt9yNMXdQgJMI98OxkxUgmL2awfQjxwPNkLLed/7xeeRDFm'), --pass: 12345
-(2, 1, 'user@user.pl', 'User', 'User', '$2a$10$iLpYZ2Xt9yNMXdQgJMI98OxkxUgmL2awfQjxwPNkLLed/7xeeRDFm'); --pass: 12345
+(2, 1, 'user@user.pl', 'User', 'User', '$2a$10$iLpYZ2Xt9yNMXdQgJMI98OxkxUgmL2awfQjxwPNkLLed/7xeeRDFm'), --pass: 12345
+(3, 1, 'user2@user.pl', 'User2', 'User2', '$2a$10$iLpYZ2Xt9yNMXdQgJMI98OxkxUgmL2awfQjxwPNkLLed/7xeeRDFm'); --pass: 12345
 
 INSERT INTO USER_ROLE VALUES
 (1, 1),
-(2, 2);
+(2, 2),
+(3, 2);
 
 INSERT INTO PRODUCT_TYPE (NAME) VALUES
 ('LODÓWKI'),

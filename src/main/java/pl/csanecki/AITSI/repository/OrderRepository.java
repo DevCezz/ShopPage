@@ -11,5 +11,7 @@ import pl.csanecki.AITSI.entity.Order;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query("SELECT o FROM Order o JOIN FETCH o.orderProducts")
-    public List<Order> findAll();
+    List<Order> findAll();
+    @Query("SELECT o FROM Order o JOIN FETCH o.orderProducts where o.userEmail = :userEmail")
+    List<Order> findAllUserOrders(String userEmail);
 }

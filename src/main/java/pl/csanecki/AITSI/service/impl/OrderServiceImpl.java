@@ -39,6 +39,13 @@ public class OrderServiceImpl implements OrderService {
 	public Set<Order> getAllUniqueOrders() {
 		return new HashSet<>(orderRepository.findAll());
 	}
+
+	@Override
+	public Set<Order> getUniqueOrdersByUserEmail(String email) {
+		List<Order> orders = orderRepository.findAllUserOrders(email);
+
+		return new HashSet<>(orders);
+	}
 }
 
 

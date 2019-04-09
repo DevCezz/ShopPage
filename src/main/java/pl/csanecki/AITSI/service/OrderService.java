@@ -9,4 +9,5 @@ public interface OrderService {
 	void saveOrder(Order order);
 	List<Order> getAllOrders();
 	Set<Order> getAllUniqueOrders();
+    Set<Order> getUniqueOrdersByUserEmail(String email);
 }

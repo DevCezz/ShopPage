@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +29,7 @@ import pl.csanecki.AITSI.entity.Product;
 import pl.csanecki.AITSI.entity.embedded.Address;
 import pl.csanecki.AITSI.service.OrderService;
 import pl.csanecki.AITSI.service.ProductService;
+import pl.csanecki.AITSI.util.RoleChecker;
 
 @Controller
 @RequestMapping("/order")
@@ -100,27 +103,24 @@ public class OrderController {
 
     	session.invalidate();
     	order = new Order();
-    	
-    	Set<Order> orders = orderService.getAllUniqueOrders();
-    	
-    	model.addAttribute("orders", orders);
-    	
-        return "orders";
+
+        return "redirect:/order/getOrders";
     }
     
     @GetMapping("/getOrders")
     public String getOrders(Model model, HttpServletRequest request) {
     	Set<Order> orders = null;
 
-    	if(request.isUserInRole("ADMIN"))
+    	if(RoleChecker.checkIfUserHasRole("ADMIN"))
     		orders = orderService.getAllUniqueOrders();
-    	else if(request.isUserInRole("USER"))
-			orders = orderService.getUniqueOrdersByUserEmail();
-    	
+    	else if(RoleChecker.checkIfUserHasRole("USER")) {
+			String email = request.getUserPrincipal().getName();
+
+			orders = orderService.getUniqueOrdersByUserEmail(email);
+		}
+
     	model.addAttribute("orders", orders);
 
-
-    	
         return "orders";
     }
     

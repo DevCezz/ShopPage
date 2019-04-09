@@ -49,7 +49,7 @@
                         <span sec:authentication="authorities"></span>
                     </li>
 	            </th:block>
-	            <th:block sec:authorize="hasAuthority('USER')">
+	            <th:block sec:authorize="isAuthenticated()">
 	                <li class="nav-item">
 	                    <a class="glyphicon glyphicon glyphicon-th icon" th:href="@{/order/getOrders}">
 	                        <span class="icon-tooltip">Zamówienia</span>
