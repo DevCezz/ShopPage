@@ -4,6 +4,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import pl.csanecki.AITSI.entity.embedded.Address;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -12,6 +13,7 @@ import java.util.Set;
 @Table(name = "ORDER_CART")
 public class Order {
     @Id
+	@Size(max = 50)
     @Column(name = "ORDER_ID")
     private String orderId;
 
