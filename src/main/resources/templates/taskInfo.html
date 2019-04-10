@@ -2,7 +2,7 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8">
-		<title>Main Page</title>
+		<title>Task Info</title>
 	
 		<!-- External icons -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,17 +12,18 @@
 		
 		<!-- Internal css -->
 		<link rel="stylesheet" th:href="@{/css/general.css}" />
+		<link rel="stylesheet" th:href="@{/css/taskInfo.css}" />
 	</head>
 	<body>
 		<nav th:replace="fragments/header :: header"/>
 		<div th:replace="fragments/header :: grad"/>
 
 		<div class="titleText">
-			<h1 class="small-mg-bot">Cezary Sanecki</h1>
+			<h1>Cezary Sanecki</h1>
 			<h3 class="small-mg-bot">nr indeksu: 251957</h3>
 		</div>
 
-		<div class="container">
+		<div class="container info-global">
 			<div class="row">
 				<div>
 					<h2>Opis serwisu</h2>
