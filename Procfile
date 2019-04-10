@@ -1,1 +1,1 @@
-web: java -jar target/AITSI-0.0.1-SNAPSHOT.war
+web: java -jar target/AITSI-0.0.1-SNAPSHOT.jar
