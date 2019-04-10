@@ -20,38 +20,44 @@
 
 		<div class="titleText">
 			<h1>Cezary Sanecki</h1>
-			<h3 class="small-mg-bot">nr indeksu: 251957</h3>
+			<h3 class="small-mg-bot" style="text-decoration: underline;">nr indeksu: 251957</h3>
 		</div>
 
 		<div class="container info-global">
 			<div class="row">
 				<div>
-					<h2>Opis serwisu</h2>
-					<p>
+					<h1 class="info-title">Opis serwisu</h1>
+					
+					<p class="info-main-text">
 						Prezentowany serwis to sklep internetowy pozwalający na monitorowanie 
 						wszystkich zakupów przez administratora. Użytkownicy posiadający konta mogą zamawiać 
 						produkty i monitorować swoje zamówienia natomiast pozostali użytkownicy mogą swobodnie 
 						przeglądać ofertę sklepu internetowego.
 					</p>
-					<p>
+					<p class="info-main-text">
+						<strong>Administrator:</strong>
+						Login: admin@admin.pl
+						Hasło: 12345 
+					</p>
+					<p class="info-main-text">
 						<strong>Uzytkownik 1:</strong>
 						Login: user@user.pl
-						Haslo: 12345 
+						Hasło: 12345 
 					</p>
-					<p>
+					<p class="info-main-text">
 						<strong>Uzytkownik 2:</strong>
 						Login: user2@user.pl
-						Haslo: 12345 
+						Hasło: 12345 
 					</p>
 				</div>
 				
 				<div>
-					<h2>Technologie</h2>
+					<h1 class="info-title">Technologie</h1>
 					
-					<p>
+					<p class="info-main-text">
 						Strona internetowa została wykonana z wykorzystaniem następujących technologii:
 					</p>
-					<ul>
+					<ul class="info-main-text">
 						<li>JAVA 8</li>
 						<li>Spring MVC 5.1.6</li>
 						<li>Baza danych MySQL 8.0</li>
@@ -65,76 +71,76 @@
 				</div>
 				
 				<div>
-					<h2>Wymagania stawiane aplikacji</h2>
+					<h1 class="info-title">Wymagania stawiane aplikacji</h1>
 					
-					<p>
+					<p class="info-main-text info-req">
 						Serwis może być zrealizowany na bazie HTML 4.01 lub XHTML (dopuszczalne jest też użycie XML+XSLT). 
 						Strony muszą być utworzone poprawnie i mieć poprawne deklaracje typu
 					</p>
-					<p>
-						Serwis został wykonany na bazie HTML 5 (deklaracja &lt!DOCTYPE html&gt) oraz został sprawdzony 
-						<a href="https://validator.w3.org/">validatorem html</a>. 
+					<p class="info-main-text">
+						Serwis został wykonany na bazie HTML 5 (deklaracja &lt!DOCTYPE HTML&gt) oraz został sprawdzony 
+						<a class="info-href" href="https://validator.w3.org/">validatorem html</a>. 
 					</p>
 					
-					<p>
+					<p class="info-main-text info-req">
 						Wymagane jest nietrywialne formatowanie przy użyciu CSS. reguł CSS również będzie sprawdzana walidatorem.
 					</p>
-					<p>
+					<p class="info-main-text">
 						Nietrywialne formatowanie osiągnięto dzięki zastosowaniu frameworku 
-						<a href="https://getbootstrap.com/docs/4.3/">Bootstrap 4.3</a>. Poprawność reguł CSS 
-						została sprawdzona <a href="https://jigsaw.w3.org/css-validator/">validatorem CSS</a>. 
+						<a class="info-href" href="https://getbootstrap.com/docs/4.3/">Bootstrap 4.3</a>. Poprawność reguł CSS 
+						została sprawdzona <a class="info-href" href="https://jigsaw.w3.org/css-validator/">validatorem CSS</a>. 
 					</p>
 					
-					<p>
+					<p class="info-main-text info-req">
 						Kompatybilność i „łagodna degradacja” - serwis powinien funkcjonować poprawnie i wyglądać 
 						dobrze we wszystkich popularnych przeglądarkach (najnowsze wersje), a korzystanie z serwisu 
 						powinno być też możliwe – choć zapewne nie bez zakłóceń w rodzaju nieudanego formatowania.
 					</p>
-					<p>
+					<p class="info-main-text">
 						Serwis został przetestowany na popularnych przeglądarkach internetowych takich jak:
 					</p>
-					<ul>
+					<ul class="info-main-text">
 						<li>Google Chrome</li>
 						<li>Mozilla Firefox</li>
 						<li>Internet Explorer (MS Edge)</li>
 					</ul>
 					
-					<p>
+					<p class="info-main-text info-req">
 						Dostępność dla niepełnosprawnych – w szczególności powinna być możliwa nawigacja przy użyciu 
 						oprogramowania czytającego.
 					</p>
-					<p>
+					<p class="info-main-text">
 						Wszystkie obrazki posiadają teksty alternatywne a strony tytuły. 
 					</p>
 					
-					<p>
+					<p class="info-main-text info-req">
 						Poza (X)HTML i CSS serwis powinien wykorzystywać co najmniej jedną wybraną technologię spośród 
 						przedstawionych na wykładzie (np. skrypty po stronie serwera i/lub klienta, ciasteczka, bazy danych, 
 						web serwisy, SSL...)
 					</p>
-					<p>
-						Strona posiada animowany widok powitalny wykonany z zastosowaniem skryptów JS po stronie użytkownika. 
+					<p class="info-main-text">
+						Strona posiada animowany <a class="info-href" th:href="@{/}">widok powitalny</a> wykonany z zastosowaniem skryptów JS po stronie użytkownika. 
 						Wszystkie informacje o zakupach i ofertach sklepu przechowywane są w relacyjnej bazie danych mySQL. 
 					</p>
 					
-					<p>
+					<p class="info-main-text info-req">
 						Serwis powinien zawierać dobrze przemyślany, wygodny i spójny system nawigacji. Co więcej, 
 						serwis powinien być na tyle duży, aby ten system miał sens
 					</p>
-					<p>
+					<p class="info-main-text">
 						Aplikacja posiada wygodny system nawigacji widoczny na początku każdegej strony.
 					</p>
-					<p>
+					<p class="info-main-text">
 						Serwis posiada układ w formie kafelków. Wszystkie produkty są pogrupowane w kategorie, 
 						które administrator może tworzyć lub modyfikować wedle uznania.
 					</p>
-					<p>
+					<p class="info-main-text">
 						Administrator ma możliwość dodawania produktów, kategorii oraz wytwórców do swojego sklepu. 
 					</p>
-					<p>
+					<p class="info-main-text">
 						Użytkownicy mają możliwość dokonywania zakupów w sklepie oraz posiadają wgląd do historii swoich transakcji. 
 					</p>
-					<p>
+					<p class="info-main-text">
 						Administrator posiada podgląd historii wszystkich zakupów wykonanych w sklepie internetowym przez użytkowników. 
 					</p>
 				</div>

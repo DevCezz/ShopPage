@@ -34,7 +34,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm">
-					<img class="unit-img" th:src="@{'/img/products/' + ${product.getProductId()} + '.jpg'}">
+					<img class="unit-img" th:src="@{'/img/products/' + ${product.getProductId()} + '.jpg'}" 
+							th:alt="${product.getProducer()} + ' ' + ${product.getModel()}">
 				</div>
 				<div class="col-sm">
 					<div class="unit-desc">
