@@ -1,18 +1,18 @@
-INSERT INTO aitsiwebstore.role VALUES
+INSERT INTO role VALUES
 (1, 'ADMIN'),
 (2, 'USER');
 
-INSERT INTO aitsiwebstore.user VALUES
+INSERT INTO users VALUES
 (1, 1, 'admin@admin.pl', 'Admin', 'Admin', '$2a$10$iLpYZ2Xt9yNMXdQgJMI98OxkxUgmL2awfQjxwPNkLLed/7xeeRDFm'), --pass: 12345
 (2, 1, 'user@user.pl', 'User', 'User', '$2a$10$iLpYZ2Xt9yNMXdQgJMI98OxkxUgmL2awfQjxwPNkLLed/7xeeRDFm'), --pass: 12345
 (3, 1, 'user2@user.pl', 'User2', 'User2', '$2a$10$iLpYZ2Xt9yNMXdQgJMI98OxkxUgmL2awfQjxwPNkLLed/7xeeRDFm'); --pass: 12345
 
-INSERT INTO aitsiwebstore.user_role VALUES
+INSERT INTO user_role VALUES
 (1, 1),
 (2, 2),
 (3, 2);
 
-INSERT INTO aitsiwebstore.product_type (name) VALUES
+INSERT INTO product_type (name) VALUES
 ('LODÓWKI'),
 ('PRALKI'),
 ('ZMYWARKI'),
@@ -22,7 +22,7 @@ INSERT INTO aitsiwebstore.product_type (name) VALUES
 ('KUCHENKI'),
 ('AKCESORIA');
 
-INSERT INTO aitsiwebstore.product_count (product_count_id, available_amount, people_bought, item_bought) VALUES
+INSERT INTO product_count (product_count_id, available_amount, people_bought, item_bought) VALUES
 (1, 20, 10, 15),
 (2, 10, 2, 2),
 (3, 99, 3, 4),
@@ -45,7 +45,7 @@ INSERT INTO aitsiwebstore.product_count (product_count_id, available_amount, peo
 (20, 9, 7, 10),
 (21, 10, 45, 65);
 
-INSERT INTO aitsiwebstore.product (producer, model, description, prize, product_type_id, product_count_id) VALUES
+INSERT INTO product (producer, model, description, prize, product_type_id, product_count_id) VALUES
 ('MPM', '147-KB-12', 'Chłodziarko-zamrażarka klasy A+ z systemem automatycznego odszraniania, charakteryzująca się przemyślanym designem i wygodnym rozkładem półek.',
  879.00, 1, 1),
 ('SAMSUNG', 'RF56M9540SR/EF Family Hub', 'Przestronna i wygodna w użytkowaniu lodówka Samsung z linii MultiDoor doskonale wkomponuje się w kuchenne wnętrze, nadając mu wyrazisty charakter. Wykonane ze stali nierdzewnej urządzenie to nie tylko minimalistyczne i eleganckie wykończenie. To również m.in szereg funkcjonalnych rozwiązań takich jak: zewnętrzny dystrybutor wody czy szeroko otwierane drzwi, które ułatwiają dostęp do przechowywanych produktów.',
