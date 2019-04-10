@@ -38,6 +38,11 @@ public class AdminController {
     	webBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
     
+    @GetMapping("/taskInfo")
+    public String getInfoAboutTask() {
+        return "taskInfo";
+    }
+    
     @GetMapping("/addCategory")
     public String getFormForCategory(@ModelAttribute("category") ProductType productType, Model model) {
         if(productType == null)

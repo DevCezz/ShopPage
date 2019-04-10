@@ -38,6 +38,13 @@
                         </a>
                     </li>
                 </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="glyphicon glyphicon-tags icon" th:href="@{/taskInfo}">
+                            <span class="icon-tooltip">Informacje o zadaniu</span>
+                        </a>
+                    </li>
+                </th:block>
             </ul>
 
             <ul class="navbar-nav ml-auto" style="margin-right: 50px">
