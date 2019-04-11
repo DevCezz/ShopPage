@@ -17,5 +17,10 @@ productData.mouseout(function () {
 	$(this).find(".prod-img").css("filter", "grayscale(0%)")
 });
 
+function imgError(image) {
+	image.onerror = "";
+	image.src = "/img/products/prod_not_fnd.jpg";
+	return true;
+}
 
 

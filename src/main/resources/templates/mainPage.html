@@ -34,7 +34,7 @@
 						<div class="cat-data">
 							<img class="cat-img" th:src="@{'/img/categories/' +
 									${category.getName().toLowerCase()} + '.jpg'}"  
-									th:alt="${category.getName().toLowerCase()}">
+									th:alt="${category.getName().toLowerCase()}" onerror="imgError(this)">
 
 							<a class="in-category" th:href="@{/products(categoryId=${category.getProductTypeId()})}"
 							  		th:text="${category.getName().toLowerCase().substring(0, 1).toUpperCase()} +

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pl.csanecki.AITSI.entity.Product;
+import pl.csanecki.AITSI.entity.ProductCount;
 import pl.csanecki.AITSI.entity.ProductType;
 import pl.csanecki.AITSI.service.ProductService;
 

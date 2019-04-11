@@ -40,7 +40,8 @@
 							</div>
 
 							<img class="prod-img" th:src="@{'/img/products/' +
-									${product.getProductId()} + '.jpg'}" th:alt="${product.getProducer()} + ' ' + ${product.getModel()}">
+									${product.getProductId()} + '.jpg'}" th:alt="${product.getProducer()} + ' '
+									+ ${product.getModel()}" onerror="imgError(this)">
 
 							<div class="prod-prize">
 								<a class="prod-href" th:href="@{/products/product(productId=${product.getProductId()})}"

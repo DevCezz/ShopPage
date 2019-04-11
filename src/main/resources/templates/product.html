@@ -35,7 +35,7 @@
 			<div class="row">
 				<div class="col-sm-12 col-lg-6 prod-box">
 					<img class="unit-img" th:src="@{'/img/products/' + ${product.getProductId()} + '.jpg'}" 
-							th:alt="${product.getProducer()} + ' ' + ${product.getModel()}">
+							th:alt="${product.getProducer()} + ' ' + ${product.getModel()}" onerror="imgError(this)">
 				</div>
 				<div class="col-sm-12 col-lg-6 prod-desc-box">
 					<div class="unit-desc">

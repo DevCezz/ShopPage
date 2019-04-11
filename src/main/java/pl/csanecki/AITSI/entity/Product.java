@@ -47,6 +47,10 @@ public class Product {
 	@JoinColumn(name = "productCountId")
 	private ProductCount productCount;
 
+	public Product() {
+		productCount = new ProductCount();
+	}
+
 	@Override
 	public String toString() {
 		return "Product{" +

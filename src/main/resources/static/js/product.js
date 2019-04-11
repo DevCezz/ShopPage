@@ -48,5 +48,11 @@ function resizingProduct() {
 	}
 }
 
+function imgError(image) {
+	image.onerror = "";
+	image.src = "/img/products/prod_not_fnd.jpg";
+	return true;
+}
+
 
 
