@@ -30,7 +30,13 @@ h2 > a:hover:before {
     transform: scaleX(1);
 }
 
+.prod-box {
+    padding: 5% 0;
+    text-align: center;
+}
+
 .unit-img {
+    height: 90%;
     display: none;
     box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.75);
 }

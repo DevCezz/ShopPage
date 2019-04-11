@@ -10,4 +10,6 @@ public interface OrderService {
 	List<Order> getAllOrders();
 	Set<Order> getAllUniqueOrders();
     Set<Order> getUniqueOrdersByUserEmail(String email);
+
+    void checkAmountOfProducts(Order order);
 }

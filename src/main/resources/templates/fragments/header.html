@@ -15,7 +15,7 @@
 <body>
     <nav th:fragment="header" class="navbar navbar-expand-lg navbar-light nav-main">
         <div class="navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" style="margin-left: 50px">
+            <ul id="navbar-first" class="navbar-nav mr-auto" style="margin-left: 50px">
                 <li class="nav-item">
                     <a class="glyphicon glyphicon-home icon" th:href="@{/}">
                         <span class="icon-tooltip">Ekran powitalny</span>
@@ -47,15 +47,14 @@
                 </th:block>
             </ul>
 
-            <ul class="navbar-nav ml-auto" style="margin-right: 50px">
-	            <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item user-info">
-						<span>Zalogowany jako&nbsp;</span>
-                        <span sec:authentication="name"></span>
-                        &nbsp;
-                        <span sec:authentication="authorities"></span>
-                    </li>
-	            </th:block>
+            <th:block sec:authorize="isAuthenticated()">
+                <div id="navbar-login" style="text-align: center;" class="user-info">
+                    <div class="navbar-user">Zalogowany:&nbsp;</div>
+                    <div class="navbar-user" sec:authentication="name"></div>
+                </div>
+            </th:block>
+
+            <ul id="navbar-second" class="navbar-nav ml-auto" style="margin-right: 50px">
 	            <th:block sec:authorize="isAuthenticated()">
 	                <li class="nav-item">
 	                    <a class="glyphicon glyphicon glyphicon-th icon" th:href="@{/order/getOrders}">

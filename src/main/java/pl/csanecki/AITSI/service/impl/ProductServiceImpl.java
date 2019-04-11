@@ -12,6 +12,9 @@ import pl.csanecki.AITSI.repository.ProductRepository;
 import pl.csanecki.AITSI.repository.ProductTypeRepository;
 import pl.csanecki.AITSI.service.ProductService;
 
+import javax.transaction.Transactional;
+
+@Transactional
 @Service
 public class ProductServiceImpl implements ProductService {
     private ProductTypeRepository productTypeRepository;

@@ -30,5 +30,23 @@ function updateAmount() {
 	amountToPass.value = num;
 }
 
+$(window).ready(resizingProduct);
+$(window).resize(resizingProduct);
+
+function resizingProduct() {
+	var prodBox = $(".prod-box");
+	var prodDescBox = $(".prod-desc-box");
+
+	if ($(document).width() < 992) {
+		prodBox.css("padding", "0");
+		prodDescBox.css("height", "350px");
+		prodDescBox.css("margin-bottom", "50px");
+	} else {
+		prodBox.css("padding", "5% 0");
+		prodDescBox.css("height", "auto");
+		prodDescBox.css("margin-bottom", "0");
+	}
+}
+
 
 

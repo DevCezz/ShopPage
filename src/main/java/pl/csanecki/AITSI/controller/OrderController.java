@@ -77,7 +77,15 @@ public class OrderController {
     }
 
     @PostMapping("/addAddress")
-    public String askForAddress(Model model) {
+    public String checkAmountOfProductsAndAskForAddress(Model model, RedirectAttributes redirectAttributes) {
+    	try {
+    		orderService.checkAmountOfProducts(order);
+		} catch (RuntimeException exception) {
+			redirectAttributes.addFlashAttribute("error",
+					"* Większa ilość danego produktu w koszyku niż jest dostępna w sklepie");
+			return "redirect:/order/cart";
+		}
+
     	Address address = new Address();
     	    	
     	model.addAttribute("address", address);
@@ -87,7 +95,7 @@ public class OrderController {
     
     @PostMapping("/postToOrders")
     public String addOrder(@ModelAttribute("address") @Valid Address address, BindingResult bindingResult, 
-    		HttpSession session, HttpServletRequest request, Model model) {
+    		HttpSession session, HttpServletRequest request) {
         if(bindingResult.hasErrors()) {
             return "address";
         }
@@ -98,8 +106,8 @@ public class OrderController {
         
         copyOrder.setAddress(address);
     	copyOrder.setUserEmail(userEmail);
-        
-    	orderService.saveOrder(copyOrder);
+
+		orderService.saveOrder(copyOrder);
 
     	session.invalidate();
     	order = new Order();
@@ -124,7 +132,7 @@ public class OrderController {
         return "orders";
     }
     
-    public Order getCopyOfSessionOrder(Order order) {
+    private Order getCopyOfSessionOrder(Order order) {
     	Order copyOrder = new Order();
     	
     	copyOrder.setOrderId(order.getOrderId());

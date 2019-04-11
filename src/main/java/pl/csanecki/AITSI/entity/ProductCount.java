@@ -28,6 +28,15 @@ public class ProductCount {
 		this.itemBought = 0;
 	}
 
+	public void subtractAmountOfProduct(int amountToSubtract) {
+		availableAmount -= amountToSubtract;
+	}
+
+	public void increaseSoldRating(int amount) {
+		itemBought += amount;
+		peopleBought++;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductCount{" +
